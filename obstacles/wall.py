@@ -10,7 +10,7 @@ class WallObstacle(Obstacle):
     def __init__(self, x_origin, y_origin, dimension, angle):
         Obstacle.__init__(self, x_origin, y_origin)
         self._dimension = dimension
-        self.angle = angle
+        self._angle = angle
 
     def _get_obstacle_origin(self):
         """
@@ -23,7 +23,7 @@ class WallObstacle(Obstacle):
         Return the obstacle extremity coordinates
         """
         x_0, y_0 = self._get_obstacle_origin()
-        return x_0 + self._dimension * np.cos((np.pi/180)*self.angle), y_0 + self._dimension * np.sin((np.pi/180)*self.angle)
+        return x_0 + self._dimension * np.cos((np.pi/180)*self._angle), y_0 + self._dimension * np.sin((np.pi/180)*self.angle)
 
     def _get_center_coordinates(self):
         """
@@ -38,7 +38,7 @@ class WallObstacle(Obstacle):
         Return the coeff of the obstacle equation
         """
         x_0, y_0 = self._get_obstacle_origin()
-        a = np.sin((np.pi/180)*self.angle)
+        a = np.sin((np.pi/180)*self._angle)
         b = y_0 - a*x_0
         return a, b
 
@@ -54,7 +54,7 @@ class WallObstacle(Obstacle):
             x_intersection = x_drone
             y_intersection = a_wall*x_drone + b_wall
         # Obstacle perpendicular to the X axis
-        elif np.abs(self.angle - 90) < 0.5 or np.abs(self.angle - 270) < 0.5:
+        elif np.abs(self._angle - 90) < 0.5 or np.abs(self._angle - 270) < 0.5:
             x_intersection = self._get_obstacle_origin()[0]
             y_intersection = a_drone*x_intersection+b_drone
         else:

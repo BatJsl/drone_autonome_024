@@ -9,9 +9,9 @@ import sys
 import argparse
 sys.path.insert(0, '../drone')
 sys.path.insert(0, '../obstacles')
-from virtual_drone import VirtualDrone
+from drone.virtual_drone import VirtualDrone
 from obstacles.wall import WallObstacle
-from inspection_drone import InspectionDrone
+from drone. inspection_drone import InspectionDrone
 from obstacles.corridor import CorridorObstacle
 
 simulation = True

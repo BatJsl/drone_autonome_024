@@ -2,14 +2,20 @@ import sys
 
 sys.path.insert(0, '../drone')
 sys.path.insert(0, '../obstacles')
-from obstacles.wall import WallObstacle
-from obstacles.corridor import CorridorObstacle
+from wall import WallObstacle
+from corridor import CorridorObstacle
 
 
 # Init obstacles
-wall1 = WallObstacle(-1000, 1000, 2000, 0)
+x0 = -1000
+y0 = 1000
+length = 2000
+angle = 0
+wall1 = WallObstacle(x0, y0, length, angle)
 width_corridor = 30
-corridor = CorridorObstacle(wall1, width_corridor)
+corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
 walls = corridor.walls_corridor()
 
-print(walls)
+print(wall1._obstacle_equation())
+
+# print(walls)
