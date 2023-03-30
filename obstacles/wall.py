@@ -38,7 +38,7 @@ class WallObstacle(Obstacle):
         Return the coeff of the obstacle equation
         """
         x_0, y_0 = self._get_obstacle_origin()
-        a = np.sin((np.pi/180)*self._angle)
+        a = np.sin(np.radians(self._angle))
         b = y_0 - a*x_0
         return a, b
 
