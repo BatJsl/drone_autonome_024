@@ -37,8 +37,7 @@ class CorridorObstacle(WallObstacle):
         """
         returns a tuple of the two walls
         """
-        walls_of_corridor = [self, self.get_second_wall()]
-        return walls_of_corridor
+        return [self.get_first_wall(), self.get_second_wall()]
 
     def equation_of_corridors(self):
         wall1 = self.get_first_wall()
@@ -51,8 +50,30 @@ class CorridorObstacle(WallObstacle):
         """
         draws the corridor on a plane
         """
-        x0, y0 = self._get_corridor_origin()
+        wall1, wall2 = self.walls_corridor()
+        x10, y10 = wall1._get_obstacle_origin()
+        x11, y11 = x10 + np.cos(np.radians(self._angle)) * self._dimension, y10 + np.sin(np.radians(self._angle)) * self._dimension
+        x20, y20 = wall2._get_obstacle_origin()
+        x21, y21 = x20 + np.cos(np.radians(self._angle)) * self._dimension, y20 + np.sin(np.radians(self._angle)) * self._dimension
+        [[a1, b1], [a2, b2]] = self.equation_of_corridors()
+        extremes = [x10, x11, x20, x21]
 
-        origin_of_system = [x0 - 10, y0]
-        plt.plot()
+        x_min = np.min(extremes)
+        x_max = np.max(extremes)
+
+        n_step = 10
+        step0 = (x_min-x_max)/n_step
+        step1 = np.abs(x10-x11)/n_step
+        step2 = np.abs(x20-x21)/n_step
+
+        X = np.arange(x_min, x_max, step0)
+        X1 = np.arange(np.min([x10, x11]), np.max([x11, x10]), step1)
+        X2 = np.arange(np.min([x20-x21]), np.max([x21-x20]), step2)
+        Y1 = a1 * X1 + b1
+        Y2 = a2 * X2 + b2
+        print(len(X1), len(X2))
+        plt.scatter(X1, Y1)
+        plt.scatter(X2, Y2)
+        plt.grid()
+        plt.show()
         return 0

@@ -10,12 +10,13 @@ from corridor import CorridorObstacle
 x0 = -1000
 y0 = 1000
 length = 2000
-angle = 90
+angle = 60
 wall1 = WallObstacle(x0, y0, length, angle)
 width_corridor = 300
 corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
 walls = corridor.walls_corridor()
 
-print(corridor.equation_of_corridors())
+# print(corridor.equation_of_corridors())
 
+print(corridor.draw_corridor())
 # print(walls)
