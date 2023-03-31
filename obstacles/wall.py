@@ -23,7 +23,7 @@ class WallObstacle(Obstacle):
         Return the obstacle extremity coordinates
         """
         x_0, y_0 = self._get_obstacle_origin()
-        return x_0 + self._dimension * np.cos((np.pi/180)*self._angle), y_0 + self._dimension * np.sin((np.pi/180)*self.angle)
+        return x_0 + self._dimension * np.cos((np.pi/180)*self._angle), y_0 + self._dimension * np.sin((np.pi/180)*self._angle)
 
     def _get_center_coordinates(self):
         """

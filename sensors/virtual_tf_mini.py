@@ -41,7 +41,7 @@ class VirtualTFMiniPlus(RangeSensor):
             distance = self._distance_detection + 1
             for wall in walls:
                 # Check that the sensor axis and the obstacle are not parallel
-                if np.abs(wall.angle - angle_sensor) > 0.5:
+                if np.abs(wall._angle - angle_sensor) > 0.5:
                     x_i, y_i = wall.intersection(x_drone, y_drone, angle_sensor)
                     # Only keep the obstacles in front of the drone direction
                     x_max, y_max = self._get_max_range_coordinates(x_drone, y_drone, angle_sensor)

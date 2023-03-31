@@ -1,18 +1,19 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# python test_corridor.py --connect udp:127.0.0.1:14551
+# python test_avoidance.py --connect udp:127.0.0.1:14551
 """
-Test flying in a corridor avoidance with four lidar sensors
+Test obstacle avoidance with three lidar sensors
 Version for simulator (simulation = True) and reality (simulation = False)
 """
 import sys
+import time
 import argparse
 sys.path.insert(0, '../drone')
 sys.path.insert(0, '../obstacles')
-from drone.virtual_drone import VirtualDrone
-from obstacles.wall import WallObstacle
-from drone. inspection_drone import InspectionDrone
-from obstacles.corridor import CorridorObstacle
+from virtual_drone import VirtualDrone
+from wall import WallObstacle
+from inspection_drone import InspectionDrone
+
 
 simulation = True
 
@@ -28,7 +29,7 @@ if connection_string is None:
 if simulation:
     drone = VirtualDrone(connection_string=connection_string, baudrate=115200,
                          two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                         lidar_angle=[0, 90, -90, 180], critical_distance_lidar=100)
+                         lidar_angle=[0, 90, -90], critical_distance_lidar=100)
     first_detection = True
 
 else:
@@ -40,8 +41,10 @@ else:
 
 # Init obstacles
 wall1 = WallObstacle(-1000, 1000, 2000, 0)
-walls = [wall1, CorridorObstacle(wall1)]
-
+wall2 = WallObstacle(-300, 500, 5000, 90)
+wall3 = WallObstacle(-1000, 1200, 2000, 90)
+wall4 = WallObstacle(-1000, -1000, 2000, 0)
+walls = [wall1, wall2]
 
 drone.launch_mission()
 # Simulation : arm and takeoff the drone
