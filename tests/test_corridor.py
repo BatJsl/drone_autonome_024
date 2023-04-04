@@ -10,7 +10,6 @@ import sys
 import argparse
 sys.path.insert(0, '../drone')
 sys.path.insert(0, '../obstacles')
-print(sys.path)
 from drone.virtual_drone import VirtualDrone
 from obstacles.wall import WallObstacle
 from drone. inspection_drone import InspectionDrone
@@ -41,9 +40,15 @@ else:
 
 
 # Init obstacles
-wall1 = WallObstacle(-1000, 1000, 2000, 0)
-walls = [wall1, CorridorObstacle(wall1)]
+# Init obstacles
+x0 = -1000
+y0 = 1000
+length = 2000
+angle = -45
+width_corridor = 300
 
+corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
+walls = corridor.walls_corridor()
 
 drone.launch_mission()
 # Simulation : arm and takeoff the drone
