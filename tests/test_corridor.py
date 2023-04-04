@@ -6,14 +6,14 @@
 Test flying in a corridor avoidance with four lidar sensors
 Version for simulator (simulation = True) and reality (simulation = False)
 """
+import time
 import sys
 import argparse
 sys.path.insert(0, '../drone')
 sys.path.insert(0, '../obstacles')
-from drone.virtual_drone import VirtualDrone
-from obstacles.wall import WallObstacle
-from drone. inspection_drone import InspectionDrone
-from obstacles.corridor import CorridorObstacle
+from virtual_drone import VirtualDrone
+from inspection_drone import InspectionDrone
+from corridor import CorridorObstacle
 
 simulation = True
 
@@ -39,7 +39,6 @@ else:
                             critical_distance_lidar=200)
 
 
-# Init obstacles
 # Init obstacles
 x0 = -1000
 y0 = 1000
