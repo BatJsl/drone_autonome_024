@@ -1,5 +1,6 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
+# mavproxy.py --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
 # python test_corridor.py --connect udp:127.0.0.1:14551
 """
 Test flying in a corridor avoidance with four lidar sensors
@@ -7,8 +8,9 @@ Version for simulator (simulation = True) and reality (simulation = False)
 """
 import sys
 import argparse
-sys.path.insert(0, '../drone')
+sys.path.insert(0, '')
 sys.path.insert(0, '../obstacles')
+print(sys.path)
 from drone.virtual_drone import VirtualDrone
 from obstacles.wall import WallObstacle
 from drone. inspection_drone import InspectionDrone
