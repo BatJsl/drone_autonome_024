@@ -271,6 +271,12 @@ class InspectionDroneVirtual(object):
         """
         self._send_ned_velocity(0, 0, 0)
 
+    def send_mavlink_go_up(self, velocity):
+        """
+        Send a mavlink velocity command to set the drone vertical velocity to a value
+        """
+        self._send_ned_velocity(0, 0, velocity)
+
     def send_mavlink_right_rotate(self, angle):
         """
         Send a mavlink yaw command to rotate the drone

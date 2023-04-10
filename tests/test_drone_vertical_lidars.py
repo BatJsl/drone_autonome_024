@@ -61,11 +61,11 @@ while drone.mission_running():
 
     if drone.vert_lidar._go_up:
         print("going up")
-        drone._send_ned_velocity(0, 0, 0.5)
+        drone.send_mavlink_go_up(0.5)
         drone.send_mavlink_go_left(0.5)
     elif drone.vert_lidar._go_down:
         print("going down")
-        drone._send_ned_velocity(0, 0, -0.5)
+        drone.send_ned_velocity(0, 0, -0.5)
         drone.send_mavlink_go_right(0.5)
 
     #time.sleep(2)
