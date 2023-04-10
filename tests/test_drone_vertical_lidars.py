@@ -30,7 +30,7 @@ if simulation:
     drone = VirtualDrone(connection_string=connection_string, baudrate=115200,
                          two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
                          lidar_angle=[0, 90, -90], critical_distance_lidar=100,
-                         list_up_distances=list_up_dist, list_down_distances=list_down_dist)
+                         list_up_distances=list_down_dist, list_down_distances=list_up_dist)
 
 drone.launch_mission()
 # Simulation : arm and takeoff the drone
