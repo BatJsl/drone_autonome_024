@@ -20,8 +20,8 @@ args = parser.parse_args()
 
 connection_string = args.connect
 
-list_down_dist = list(range(250, 1500, 1))
-list_up_dist = list(range(1500, 250, -1))
+list_down_dist = list(range(250, 2500, 1))
+list_up_dist = list(range(2500, 250, -1))
 
 if connection_string is None:
     connection_string = '/dev/serial0'
@@ -61,19 +61,21 @@ while drone.mission_running():
 
     if drone.vert_lidar._go_up:
         print("going up")
-        drone._send_ned_velocity(0, 0, 0.1)
+        drone._send_ned_velocity(0, 0, 0.5)
+        drone.send_mavlink_go_left(0.5)
     elif drone.vert_lidar._go_down:
         print("going down")
-        drone._send_ned_velocity(0, 0, -0.1)
+        drone._send_ned_velocity(0, 0, -0.5)
+        drone.send_mavlink_go_right(0.5)
 
     #time.sleep(2)
 
     #drone.set_auto_mode()
     print("time")
     print(drone.time_since_mission_launch())
-    if drone.time_since_mission_launch() > 70:
+    if drone.time_since_mission_launch() > 300:
         drone.abort_mission()
-time.sleep(1)
+time.sleep(20)
 
 
 
