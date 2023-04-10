@@ -56,8 +56,10 @@ while drone.mission_running():
     drone.vert_lidar.update_vertical_path()
 
     if drone.vert_lidar._go_up:
+        print("going up")
         drone._send_ned_velocity(0, 0, 0.1)
     elif drone.vert_lidar._go_down:
+        print("going down")
         drone._send_ned_velocity(0, 0, -0.1)
 
     time.sleep(2)
