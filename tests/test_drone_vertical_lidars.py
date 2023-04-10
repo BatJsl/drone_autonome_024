@@ -45,9 +45,11 @@ while drone.mission_running():
     if drone.vert_lidar.lidar_reading():
         print("Doing vertical reading")
         drone.vert_lidar.read_up_distance()
-        print("distance_up%s"%drone.vert_lidar.get_up_distance)
+        print("distance_up%s")
+        print(drone.vert_lidar.get_up_distance)
         drone.vert_lidar.read_down_distance()
-        print("distance_down%s"%drone.vert_lidar.get_down_distance)
+        print("distance_down%s")
+        print(drone.vert_lidar.get_down_distance)
 
     if drone.is_in_auto_mode():
         print("Drone was in auto mode ")
