@@ -11,7 +11,7 @@ class TFMiniPlus(RangeSensor):
         RangeSensor.__init__(self, critical_distance)  # Calls the constructor of the parent class
         self._name = "Lidar"
         self.angle = angle  # Angle between the drone front axis and the lidar axis
-        self._v_position = v_position  # Vertical position of the sensor, for vertical drone positioning purposes
+        self.v_position = v_position  # Vertical position of the sensor, for vertical drone positioning purposes
         self._address = address
         self._time_between_readings = 0.02  # Ask a reading every 20 ms
 

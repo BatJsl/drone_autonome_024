@@ -49,7 +49,7 @@ class VerticalLidarsDetection(object):
         Function to organize the vertical lidars
         """
         for lidar in self._lidar_sensors:
-            if lidar.angle == 1:
+            if lidar.v_position == 1:
                 lidar.name = "Up lidar"
                 self._up_lidar = lidar
             else:
@@ -92,8 +92,8 @@ class VerticalLidarsDetection(object):
         """
         Function used to update the vertical path
         """
-        self.read_up_distance()
-        self.read_down_distance()
+        # self.read_up_distance()
+        # self.read_down_distance()
         if self.get_up_distance() > self.get_down_distance():
             self._go_up = True
             self._go_down = False
