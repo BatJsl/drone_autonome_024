@@ -45,14 +45,16 @@ while drone.mission_running():
     if drone.vert_lidar.lidar_reading():
         print("Doing vertical reading")
         drone.vert_lidar.read_up_distance()
+        print("distance_up%s"%drone.vert_lidar.get_up_distance)
         drone.vert_lidar.read_down_distance()
+        print("distance_down%s"%drone.vert_lidar.get_down_distance)
 
     if drone.is_in_auto_mode():
         print("Drone was in auto mode ")
         print("changing to guided mode ")
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
-
+    drone.set_guided_mode()
     drone.vert_lidar.update_vertical_path()
 
     if drone.vert_lidar._go_up:
@@ -62,11 +64,12 @@ while drone.mission_running():
         print("going down")
         drone._send_ned_velocity(0, 0, -0.1)
 
-    time.sleep(2)
+    #time.sleep(2)
 
-    drone.set_auto_mode()
-
-    if drone._start_time>70:
+    #drone.set_auto_mode()
+    print("time")
+    print(drone.time_since_mission_launch())
+    if drone.time_since_mission_launch() > 70:
         drone.abort_mission()
 time.sleep(1)
 
