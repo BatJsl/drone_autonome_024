@@ -20,8 +20,8 @@ args = parser.parse_args()
 
 connection_string = args.connect
 
-list_down_dist = list(range(250, 500, 1))
-list_up_dist = list(range(500, 250, -1))
+list_down_dist = list(range(250, 1500, 1))
+list_up_dist = list(range(1500, 250, -1))
 
 if connection_string is None:
     connection_string = '/dev/serial0'
