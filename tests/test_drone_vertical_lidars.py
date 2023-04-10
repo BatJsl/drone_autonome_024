@@ -75,7 +75,7 @@ while drone.mission_running():
     print(drone.time_since_mission_launch())
     if drone.time_since_mission_launch() > 300:
         drone.abort_mission()
-    time.sleep(20)
+    time.sleep(5)
 time.sleep(10)
 
 
