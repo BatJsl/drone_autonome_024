@@ -1,6 +1,6 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# python test_drone_vertical_lidars.py --connect udp:127.0.0.1:14551
+# python test_yaw_mouvement.py --connect udp:127.0.0.1:14551
 
 """
 Test vertical movement with vertical lidars, simulation environment
@@ -43,12 +43,12 @@ while drone.mission_running():
     drone.update_switch_states()
 
     if drone.vert_lidar.lidar_reading():
-        print("Doing vertical reading")
+        print("Doing reading")
         drone.vert_lidar.read_up_distance()
-        print("distance_up%s")
+        print("distance_up")
         print(drone.vert_lidar._distance_up)
         drone.vert_lidar.read_down_distance()
-        print("distance_down%s")
+        print("distance_down")
         print(drone.vert_lidar._distance_down)
 
     if drone.is_in_auto_mode():
@@ -60,14 +60,12 @@ while drone.mission_running():
     drone.vert_lidar.update_vertical_path()
 
     if drone.vert_lidar._go_up:
-        print("going up")
-        drone.send_mavlink_go_left(0.05)
-        drone.send_mavlink_go_up(0.15)
-    elif drone.vert_lidar._go_down:
-        print("going down")
-        drone.send_mavlink_go_right(0.05)
-        drone.send_mavlink_go_down(0.15)
+        print("rotating CW")
+        drone.send_mavlink_right_rotate(30)
 
+    elif drone.vert_lidar._go_down:
+        print("rotating CCW")
+        drone.send_mavlink_left_rotate(30)
 
     #time.sleep(2)
 
@@ -78,8 +76,3 @@ while drone.mission_running():
         drone.abort_mission()
     time.sleep(5)
 time.sleep(10)
-
-
-
-
-
