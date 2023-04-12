@@ -62,10 +62,12 @@ while drone.mission_running():
     if drone.vert_lidar._go_up:
         print("rotating CW")
         drone.send_mavlink_right_rotate(30)
+        time.sleep(3)
 
     elif drone.vert_lidar._go_down:
         print("rotating CCW")
         drone.send_mavlink_left_rotate(30)
+        time.sleep(3)
 
     #time.sleep(2)
 
