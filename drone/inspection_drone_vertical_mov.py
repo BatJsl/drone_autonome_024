@@ -214,7 +214,7 @@ class InspectionDroneVirtual(object):
             mavutil.mavlink.MAV_CMD_CONDITION_YAW,  # command
             0,  # confirmation
             angle,  # yaw in degrees
-            6,  # yaw speed deg/s
+            10,  # yaw speed deg/s
             direction,  # direction -1 ccw, 1 cw
             1,  # 1 for relative yaw value
             0, 0, 0)
