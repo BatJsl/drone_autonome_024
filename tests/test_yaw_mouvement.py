@@ -42,7 +42,7 @@ while drone.mission_running():
     drone.update_time()
     drone.update_switch_states()
 
-    if drone.vert_lidar.lidar_reading():
+    """if drone.vert_lidar.lidar_reading():
         print("Doing reading")
         drone.vert_lidar.read_up_distance()
         print("distance_up")
@@ -58,21 +58,21 @@ while drone.mission_running():
         drone.send_mavlink_stay_stationary()
     drone.set_guided_mode()
     drone.vert_lidar.update_vertical_path()
-
-    if drone.vert_lidar._go_up:
+"""
+    for i in range (1,305):
         print("rotating CW")
         drone.send_mavlink_right_rotate(30)
         time.sleep(1)
-
-    elif drone.vert_lidar._go_down:
+        print("time")
+    """elif drone.vert_lidar._go_down:
         print("rotating CCW")
         drone.send_mavlink_left_rotate(30)
-        time.sleep(1)
+        time.sleep(1)"""
 
     #time.sleep(2)
 
     #drone.set_auto_mode()
-    print("time")
+
     print(drone.time_since_mission_launch())
     if drone.time_since_mission_launch() > 300:
         drone.abort_mission()
