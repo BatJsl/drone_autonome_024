@@ -219,7 +219,6 @@ class InspectionDroneVirtual(object):
             1,  # 1 for relative yaw value
             0, 0, 0)
         self.vehicle.send_mavlink(msg)
-
     def send_mavlink_go_forward(self, velocity):
         """
         Send a mavlink velocity command to move the drone forward
