@@ -59,7 +59,7 @@ while drone.mission_running():
     drone.set_guided_mode()
     drone.vert_lidar.update_vertical_path()
 """
-    for i in range (1,305):
+    for i in range (1,2):
         print("rotating CW")
         drone.send_mavlink_right_rotate(30)
         time.sleep(1)
