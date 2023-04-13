@@ -62,6 +62,8 @@ while drone.mission_running():
     for i in range (1,2):
         print("is rotating?")
         print(drone._is_rotating())
+        print("yaw angle")
+        print(drone.get_yaw())
         print("rotating CW")
         drone.send_mavlink_right_rotate(50)
         time.sleep(1)
