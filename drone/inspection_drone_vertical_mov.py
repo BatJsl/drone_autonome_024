@@ -216,7 +216,7 @@ class InspectionDroneVirtual(object):
             angle,  # yaw in degrees
             10,  # yaw speed deg/s
             direction,  # direction -1 ccw, 1 cw
-            1,  # 1 for relative yaw value
+            0,  # 1 for relative yaw value
             0, 0, 0)
         self.vehicle.send_mavlink(msg)
 
