@@ -61,7 +61,7 @@ while drone.mission_running():
 """
     for i in range (1,2):
         print("rotating CW")
-        drone.send_mavlink_right_rotate(30)
+        drone.send_mavlink_right_rotate(50)
         time.sleep(1)
         print("time")
     """elif drone.vert_lidar._go_down:
