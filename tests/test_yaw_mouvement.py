@@ -37,7 +37,7 @@ drone.launch_mission()
 
 if simulation:
     drone.arm_and_takeoff(2)
-    #time.sleep(5)
+    time.sleep(5)
 while drone.mission_running():
     drone.update_time()
     drone.update_switch_states()
