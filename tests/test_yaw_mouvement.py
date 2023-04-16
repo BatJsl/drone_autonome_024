@@ -37,41 +37,19 @@ drone.launch_mission()
 
 if simulation:
     drone.arm_and_takeoff(2)
-
+    time.sleep(5)
 while drone.mission_running():
     drone.update_time()
     drone.update_switch_states()
+    print("is rotating?")
+    print(drone._is_rotating())
+    print("yaw angle")
+    print(drone.get_yaw())
+    print("rotating CW")
+    drone.send_mavlink_right_rotate(40)
+    #time.sleep(1)
+    print("time")
 
-    """if drone.vert_lidar.lidar_reading():
-        print("Doing reading")
-        drone.vert_lidar.read_up_distance()
-        print("distance_up")
-        print(drone.vert_lidar._distance_up)
-        drone.vert_lidar.read_down_distance()
-        print("distance_down")
-        print(drone.vert_lidar._distance_down)
-
-    if drone.is_in_auto_mode():
-        print("Drone was in auto mode ")
-        print("changing to guided mode ")
-        drone.set_guided_mode()
-        drone.send_mavlink_stay_stationary()
-    drone.set_guided_mode()
-    drone.vert_lidar.update_vertical_path()
-"""
-    for i in range (1,2):
-        print("is rotating?")
-        print(drone._is_rotating())
-        print("yaw angle")
-        print(drone.get_yaw())
-        print("rotating CW")
-        drone.send_mavlink_right_rotate(50)
-        time.sleep(1)
-        print("time")
-    """elif drone.vert_lidar._go_down:
-        print("rotating CCW")
-        drone.send_mavlink_left_rotate(30)
-        time.sleep(1)"""
 
     #time.sleep(2)
 
