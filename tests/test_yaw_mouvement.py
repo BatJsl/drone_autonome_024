@@ -46,7 +46,7 @@ while drone.mission_running():
     print("yaw angle")
     print(drone.get_yaw())
     print("rotating CW")
-    drone.send_mavlink_right_rotate(40)
+    drone.send_mavlink_right_rotate(90)
     #time.sleep(1)
     print("time")
 
