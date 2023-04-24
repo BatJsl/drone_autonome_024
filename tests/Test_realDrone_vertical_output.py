@@ -32,7 +32,6 @@ while mission:
 
         elif vertical_lidars._go_down:
             print("aller plus bas")
-
         else:
             print("c'est le milieu")
         time.sleep(1)
