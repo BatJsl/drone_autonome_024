@@ -37,12 +37,16 @@ class VirtualVerticalSensors(RangeSensor):
 
     def update_vertical_path(self):
         """
-        Function used to update the vertical path
+        Function used to update the vertical path. We want the drone to be steady if it is at 10cm of the middle at most
         """
-        if self.get_up_distance() > self.get_down_distance():
+        up_dis = self.get_up_distance()
+        down_dis = self.get_down_distance()
+        middle = abs(up_dis-down_dis)/2
+
+        if up_dis > down_dis and abs(up_dis - middle) > 10:
             self._go_up = True
             self._go_down = False
-        elif self.get_up_distance() < self.get_down_distance():
+        elif up_dis < down_dis and abs(down_dis - middle) > 10:
             self._go_down = True
             self._go_up = False
         else:
