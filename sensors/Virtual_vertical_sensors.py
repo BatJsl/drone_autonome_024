@@ -43,7 +43,7 @@ class VirtualVerticalSensors(RangeSensor):
         self.read_down_distance()
         up_dis = self.get_up_distance()
         down_dis = self.get_down_distance()
-        middle = np.abs(up_dis-down_dis)/2
+        middle = np.abs(up_dis+down_dis)/2
 
         if up_dis > down_dis and np.abs(up_dis - middle) > 10:
             self._go_up = True
