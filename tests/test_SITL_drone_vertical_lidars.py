@@ -66,7 +66,7 @@ while drone.mission_running():
             drone.vert_lidar._distance_up = list_up_dist[count]
             print("distance_up")
             print(drone.vert_lidar._distance_up)
-            drone.vert_lidar._distance_down = list_up_dist[count]
+            drone.vert_lidar._distance_down = list_down_dist[count]
             print("distance_down")
             print(drone.vert_lidar._distance_down)
 

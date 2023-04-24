@@ -39,8 +39,8 @@ class VirtualVerticalSensors(RangeSensor):
         """
         Function used to update the vertical path. We want the drone to be steady if it is at 10cm of the middle at most
         """
-        self.read_up_distance()
-        self.read_down_distance()
+        #self.read_up_distance()
+        #self.read_down_distance()
         up_dis = self.get_up_distance()
         down_dis = self.get_down_distance()
         middle = np.abs(up_dis+down_dis)/2
