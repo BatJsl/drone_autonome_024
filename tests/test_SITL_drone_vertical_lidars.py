@@ -61,14 +61,14 @@ while drone.mission_running():
     drone.update_switch_states()
     for i in range(len(list_down_dist)/10):
         count = i*10
-        if drone.vert_lidar.lidar_reading():
-            print("Doing vertical reading")
-            drone.vert_lidar._distance_up = list_up_dist[count]
-            print("distance_up")
-            print(drone.vert_lidar._distance_up)
-            drone.vert_lidar._distance_down = list_down_dist[count]
-            print("distance_down")
-            print(drone.vert_lidar._distance_down)
+        #if drone.vert_lidar.lidar_reading():
+        print("Doing vertical reading")
+        drone.vert_lidar._distance_up = list_up_dist[count]
+        print("distance_up")
+        print(drone.vert_lidar._distance_up)
+        drone.vert_lidar._distance_down = list_down_dist[count]
+        print("distance_down")
+        print(drone.vert_lidar._distance_down)
 
         if drone.is_in_auto_mode():
             print("Drone was in auto mode ")
@@ -87,7 +87,7 @@ while drone.mission_running():
             print("going down")
             #drone.send_mavlink_go_right(0.05)
             drone.send_mavlink_go_down(0.15)
-
+        time.sleep(0.5)
     # time.sleep(2)
 
     # drone.set_auto_mode()
