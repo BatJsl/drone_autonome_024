@@ -1,6 +1,6 @@
 from range_sensors import RangeSensor
 import time
-
+import numpy as np
 
 class VirtualVerticalSensors(RangeSensor):
     """
@@ -41,12 +41,12 @@ class VirtualVerticalSensors(RangeSensor):
         """
         up_dis = self.get_up_distance()
         down_dis = self.get_down_distance()
-        middle = abs(up_dis-down_dis)/2
+        middle = np.abs(up_dis-down_dis)/2
 
-        if up_dis > down_dis and abs(up_dis - middle) > 10:
+        if up_dis > down_dis and np.abs(up_dis - middle) > 10:
             self._go_up = True
             self._go_down = False
-        elif up_dis < down_dis and abs(down_dis - middle) > 10:
+        elif up_dis < down_dis and np.abs(down_dis - middle) > 10:
             self._go_down = True
             self._go_up = False
         else:

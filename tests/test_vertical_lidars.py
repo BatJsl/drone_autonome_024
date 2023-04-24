@@ -3,7 +3,7 @@ import sys
 import numpy as np
 
 """
-Code to test boolean behavior of vertical lidars, also to test the connection to them
+Code to test boolean behavior of vertical lidars, also to test the connection to the raspberry, tested in the drone
 """
 sys.path.insert(0, '../sensors')
 from tf_mini_vertical import VerticalLidarsDetection

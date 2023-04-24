@@ -3,7 +3,7 @@
 # python test_yaw_mouvement.py --connect udp:127.0.0.1:14551
 
 """
-Test vertical movement with vertical lidars, simulation environment
+Test to see how the yaw mouvement is imposed to the drone, to understand the last year yaw code
 """
 
 import sys
