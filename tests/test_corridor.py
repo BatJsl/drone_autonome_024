@@ -29,14 +29,13 @@ if connection_string is None:
 if simulation:
     drone = VirtualDrone(connection_string=connection_string, baudrate=115200,
                          two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                         lidar_angle=[0, 90, -90, 180], critical_distance_lidar=100)
+                         lidar_angle=[-90, 0, 90, 180])
     first_detection = True
 
 else:
     drone = InspectionDrone(connection_string, baudrate=115200,
                             two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                            lidar_angle=[0, 90, -90], lidar_address=[0x10, 0x12, 0x11],
-                            critical_distance_lidar=200)
+                            lidar_angle=[-90, 0, 90, 180], lidar_address=[0x12, 0x10, 0x11, 0x13])
 
 
 # Init obstacles

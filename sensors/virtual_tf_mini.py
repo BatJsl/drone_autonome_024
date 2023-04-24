@@ -1,7 +1,6 @@
 from range_sensors import RangeSensor
 import numpy as np
 
-DEFAULT_CRITICAL_DISTANCE = 100
 DEFAULT_DISTANCE_DETECTION = 500
 
 
@@ -11,7 +10,7 @@ class VirtualTFMiniPlus(RangeSensor):
     For simulator use only
     """
     def __init__(self, angle,
-                 critical_distance=DEFAULT_CRITICAL_DISTANCE, distance_detection=DEFAULT_DISTANCE_DETECTION):
+                  distance_detection=DEFAULT_DISTANCE_DETECTION):
         """
         Constructor
         Inputs :
@@ -19,7 +18,7 @@ class VirtualTFMiniPlus(RangeSensor):
         - The distance under which the lidar can read a distance
         """
         # Calls the constructor of the parent class
-        RangeSensor.__init__(self, critical_distance)
+        RangeSensor.__init__(self)
         self._name = "Lidar"
         self.angle = angle
         # Ask a reading every 20 ms

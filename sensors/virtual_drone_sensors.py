@@ -7,12 +7,10 @@ class VirtualDroneLidarSensors(object):
     Class of lidar sensors
     Used to deal with multiple sensors on the drone
     """
-    def __init__(self, lidar_angle, critical_distance_lidar=1):
+    def __init__(self, lidar_angle):
         self._lidar_number = len(lidar_angle)  # Number of lidar sensors
-        self._critical_distance_lidar = critical_distance_lidar
         # Initialize a list with all the lidar sensors
         self.lidar_sensors = self._init_lidar_sensors(lidar_angle)
-
     def _init_lidar_sensors(self, lidar_angle):
         """
         Initialize a list of lidar sensors with their address and angle
@@ -21,8 +19,14 @@ class VirtualDroneLidarSensors(object):
         if lidar_angle is not None:
             for angle in lidar_angle:
                 # Initialize a lidar
-                lidar_sensors.append(VirtualTFMiniPlus(angle, self._critical_distance_lidar))
+                lidar_sensors.append(VirtualTFMiniPlus(angle))
         return lidar_sensors
+
+    def read_distances(self, drone_x, drone_y, drone_angle, walls):
+        for i in range(self._lidar_number):
+            sensor = self.lidar_sensors[i]
+            sensor_angle = sensor.angle
+            sensor.read_distance(drone_x, drone_y, (drone_angle - sensor_angle) % 360, walls)
 
 
 class VirtualThreeLidarSensorsDetection(ThreeLidarSensorsDetection):
@@ -42,8 +46,3 @@ class VirtualThreeLidarSensorsDetection(ThreeLidarSensorsDetection):
     def read_distance(self, drone_x, drone_y, angle, walls):
         return self._front_lidar.read_distance(drone_x, drone_y, angle, walls)
 
-    def read_right_distance(self, drone_x, drone_y, angle, walls):
-        return self._right_lidar.read_distance(drone_x, drone_y, angle, walls)
-
-    def read_left_distance(self, drone_x, drone_y, angle, walls):
-        return self._left_lidar.read_distance(drone_x, drone_y, angle, walls)

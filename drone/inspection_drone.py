@@ -5,7 +5,8 @@ from dronekit import connect, VehicleMode
 from pymavlink import mavutil
 from rc_switch import Switch
 sys.path.insert(0, '../sensors')
-from drone_sensors import ThreeLidarSensorsDetection
+from drone_sensors import DroneLidarSensors
+from tf_mini import TFMiniPlus
 
 
 class InspectionDrone(object):
@@ -82,7 +83,12 @@ class InspectionDrone(object):
         self._yaw_before_rotation = 0
         self._yaw = 0
         # Initialize sensors
-        self.lidar = ThreeLidarSensorsDetection(lidar_address, lidar_angle, critical_distance_lidar)
+        Front_sensor = TFMiniPlus(0x10, 0)
+        Left_sensor = TFMiniPlus(0x12, 0)
+        Right_sensor = TFMiniPlus(0x11, 0)
+        Back_sensor = TFMiniPlus(0x13, 0)
+        tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
+        self.lidar = DroneLidarSensors(tfminis)
 
     def update_switch_states(self):
         """
