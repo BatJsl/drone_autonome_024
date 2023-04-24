@@ -9,6 +9,7 @@ Test vertical movement with vertical lidars, simulation environment
 import sys
 import time
 import argparse
+
 sys.path.insert(0, '../drone')
 from virtual_drone_vertical_mov import VirtualDrone
 
@@ -20,25 +21,25 @@ args = parser.parse_args()
 
 connection_string = args.connect
 
-list_1 = list(range(250,500,1))
-list_2 = list(range(500,300,-1))
-list_3 = list(range(300,450,1))
-list_4 = list(range(450,400,-1))
-list_5 = list(range(400,350,-1))
-list_6 = list(range(350,390,1))
-list_7 = list(range(390,360,-1))
+list_1 = list(range(250, 500, 1))
+list_2 = list(range(500, 300, -1))
+list_3 = list(range(300, 450, 1))
+list_4 = list(range(450, 400, -1))
+list_5 = list(range(400, 350, -1))
+list_6 = list(range(350, 390, 1))
+list_7 = list(range(390, 360, -1))
 
-list_down_dist = list_1+list_2+list_3+list_4+list_5+list_6+list_7
+list_down_dist = list_1 + list_2 + list_3 + list_4 + list_5 + list_6 + list_7
 
-list_1 = list(range(500,250,-1))
-list_2 = list(range(250,450,1))
-list_3 = list(range(450,300,-1))
-list_4 = list(range(300,350,1))
-list_5 = list(range(350,400,1))
-list_6 = list(range(400,360,-1))
-list_7 = list(range(360,390,1))
+list_1 = list(range(500, 250, -1))
+list_2 = list(range(250, 450, 1))
+list_3 = list(range(450, 300, -1))
+list_4 = list(range(300, 350, 1))
+list_5 = list(range(350, 400, 1))
+list_6 = list(range(400, 360, -1))
+list_7 = list(range(360, 390, 1))
 
-list_up_dist = list_1+list_2+list_3+list_4+list_5+list_6+list_7
+list_up_dist = list_1 + list_2 + list_3 + list_4 + list_5 + list_6 + list_7
 
 if connection_string is None:
     connection_string = '/dev/serial0'
@@ -58,13 +59,14 @@ if simulation:
 while drone.mission_running():
     drone.update_time()
     drone.update_switch_states()
-    for i in range(len(list_down_dist)):
+    for i in range(len(list_down_dist)/10):
+        count = i*10
         if drone.vert_lidar.lidar_reading():
             print("Doing vertical reading")
-            drone.vert_lidar.read_up_distance()
+            drone.vert_lidar._distance_up = list_up_dist[count]
             print("distance_up")
             print(drone.vert_lidar._distance_up)
-            drone.vert_lidar.read_down_distance()
+            drone.vert_lidar._distance_down = list_up_dist[count]
             print("distance_down")
             print(drone.vert_lidar._distance_down)
 
@@ -79,25 +81,19 @@ while drone.mission_running():
 
         if drone.vert_lidar._go_up:
             print("going up")
-            drone.send_mavlink_go_left(0.05)
+            #drone.send_mavlink_go_left(0.05)
             drone.send_mavlink_go_up(0.15)
         elif drone.vert_lidar._go_down:
             print("going down")
-            drone.send_mavlink_go_right(0.05)
+            #drone.send_mavlink_go_right(0.05)
             drone.send_mavlink_go_down(0.15)
 
+    # time.sleep(2)
 
-    #time.sleep(2)
-
-    #drone.set_auto_mode()
+    # drone.set_auto_mode()
     print("time")
     print(drone.time_since_mission_launch())
     if drone.time_since_mission_launch() > 300:
         drone.abort_mission()
     time.sleep(5)
 time.sleep(10)
-
-
-
-
-

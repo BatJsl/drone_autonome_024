@@ -95,9 +95,8 @@ class VerticalLidarsDetection(object):
         # self.read_up_distance()
         # self.read_down_distance()
         up_dis = self.get_up_distance()
-        print(up_dis)
         down_dis = self.get_down_distance()
-        middle = np.abs(up_dis + down_dis) / 2
+        middle = (np.abs(self.get_up_distance() + self.get_down_distance()) / 2)
 
         if up_dis > down_dis and np.abs(up_dis - middle) > 10:
             self._go_up = True
@@ -108,16 +107,6 @@ class VerticalLidarsDetection(object):
         else:
             self._go_down = False
             self._go_up = False
-
-        """if self.get_up_distance() > self.get_down_distance():
-            self._go_up = True
-            self._go_down = False
-        elif self.get_up_distance() < self.get_down_distance():
-            self._go_down = True
-            self._go_up = False
-        else:
-            self._go_down = False
-            self._go_up = False"""
 
     def update_vertical_path_obstacle(self, vertical_obstacle_detected):
         """
