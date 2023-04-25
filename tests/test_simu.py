@@ -38,7 +38,7 @@ while drone.mission_running():
     drone.update_time()  # update time since connexion and mission's start
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         drone.update_detection(use_lidar=True, debug=True, walls=walls)  # distance measure
-    if drone.obstacle_detected():
+    if drone.corridor_detected():
         print("Obstacle detected")
     if drone.time_since_last_obstacle_detected() > 60:
         drone.abort_mission()

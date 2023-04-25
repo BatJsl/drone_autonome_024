@@ -10,7 +10,6 @@ from virtual_drone_sensors import VirtualDroneLidarSensors
 class VirtualDrone(InspectionDrone):
     """
     Specific class for a virtual drone used on a simulator
-    Deprecated class from InspectionDrone with parameters and methods for virtual positions
     """
     def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
                  lidar_angle):
@@ -27,7 +26,8 @@ class VirtualDrone(InspectionDrone):
         # Init local frame for simulated positions
         self._local_frame = self._init_local_frame()
         self.lidar = VirtualDroneLidarSensors(lidar_angle)
-
+        self._corridor_detected = False
+        self._time_last_corridor_detected
     def _init_local_frame(self):
         """
         Initialize the local frame used to create virtual drone positions
@@ -58,17 +58,15 @@ class VirtualDrone(InspectionDrone):
         self._update_yaw()
         return self._initial_angle - self._yaw
 
-    def get_sensor_angle(self, sensor_angle):  #deprecated
-        """Return the angle between the sensor axis and the X axis"""
-        angle = (self.get_angle() - sensor_angle)%360
-        return angle
-
     def get_virtual_position(self):
         """
         Update and return the drone virtual position
         """
         self._update_virtual_position()
         return self._drone_x, self._drone_y
+
+    def corridor_detected(self):
+        return self.lidar
 
     def update_lidars(self, use_lidar=True, debug=False, walls=None):
         """
@@ -77,36 +75,13 @@ class VirtualDrone(InspectionDrone):
         """
         self._update_virtual_position()
         if self.lidar.read_distance(self._drone_x, self._drone_y, self.get_angle(), walls) and debug:
-            print("Lidar range:" + str(self.lidar.get_distance()))
-        if use_lidar and self.lidar.critical_distance_reached():
-            if self.obstacle_detected():
-                self._time_last_obstacle_detected = time.time()
-            self._obstacle_detected = True
+            print("Lidar range:" + str(self.lidar.get_distances()))
+        if use_lidar :
+            if self.corridor_detected():
+                self._time_last_corridor_detected = time.time()
+            self._corridor_detected = True
         else:
-            self._obstacle_detected = False
-
-    def update_side_detection(self, debug=False, walls=None):
-        """
-        Read the distance returned by right and left sensors and check if an obstacle is detected
-        The distance is read relatively to the input list of obstacles
-        """
-        self._update_virtual_position()
-        if self.lidar.get_left_lidar() is not None:
-            if self.lidar.read_left_distance(self._drone_x, self._drone_y, self.get_angle(), walls) and debug:
-                print("Left lidar range:" + str(self.lidar.get_left_lidar().get_distance()))
-            if self.lidar.get_left_lidar().critical_distance_reached():
-                self.lidar._obstacle_detected_left = True
-            else:
-                self.lidar._obstacle_detected_left = False
-
-        if self.lidar.get_right_lidar() is not None:
-            if self.lidar.read_right_distance(self._drone_x, self._drone_y, self.get_sensor_angle(90), walls) and debug:
-                print("Right lidar range:" + str(self.lidar.get_right_lidar().get_distance()))
-            if self.lidar.get_right_lidar().critical_distance_reached():
-                self.lidar._obstacle_detected_right = True
-            else:
-                self.lidar._obstacle_detected_right = False
-
+            self._corridor_detected = False
     def arm_and_takeoff(self, tgt_altitude):
         """
         Function from the dronekit documentation used to arm and takeoff the drone on the simulator
