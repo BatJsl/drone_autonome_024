@@ -71,6 +71,8 @@ while drone.mission_running():
     if drone.do_lidar_reading():
         time_distance = time.time()-time_command
         measured_distance = measured_distance+V_measured*time_distance*100
+        print("measured_distance")
+        print(measured_distance)
         " --- Automatic Stop Control --- "
         V_command = K * (measured_distance - target_distance)
         V_command = np.min([np.abs(V_command), 0.5]) * np.sign(V_command)   # Verify it doesn't exceed Vmax = 0.5 m/s
@@ -82,6 +84,8 @@ while drone.mission_running():
 
     " --- Log Update --- "
     V_measured = drone.get_velocity()[2]
+    print("v_measured")
+    print(V_measured)
     yaw = drone.get_yaw()
     list_time.append(mission_time)
     list_V_command.append(V_command)
