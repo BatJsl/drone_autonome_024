@@ -81,7 +81,8 @@ while drone.mission_running():
         V_command = 0.5
 
 
-
+    print("V_command")
+    print(V_command)
     " --- Log Update --- "
     V_measured = drone.get_velocity()[2]
     print("v_measured")
