@@ -57,6 +57,8 @@ drone.launch_mission()
 
 time_0 = time.time()
 measured_distance = 180
+V_measured=0
+time_command = time_0
 while drone.mission_running():
     drone.update_time()                                                     # update time since connexion and mission's start
     mission_time = time.time() - time_0                                     #Time used for logs
