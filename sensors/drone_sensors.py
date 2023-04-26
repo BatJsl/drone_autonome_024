@@ -6,7 +6,7 @@ def tresh_lerp(tresh,LX,LY,DX,DY):
     DeltaY_r = -(1-fact)*DY
     return DeltaX_r, DeltaY_r
 
-class State(enum.Enum):
+class State(Enum):
     STOP = "stop"
     FORWARD = "forward"
     BACKWARD = "backward"

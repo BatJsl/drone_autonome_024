@@ -14,8 +14,7 @@ class InspectionDrone(object):
     InspectionDrone class to interact with the drone
     Relies on the dronekit vehicle class
     """
-    def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
-                 lidar_address=None, lidar_angle=None, critical_distance_lidar=300):
+    def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches):
         """
         Constructor: initialize a vehicle instance
         Inputs:

@@ -13,8 +13,7 @@ class VirtualDrone(InspectionDrone):
     """
     def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
                  lidar_angle):
-        InspectionDrone.__init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
-                                 lidar_angle=lidar_angle)
+        InspectionDrone.__init__(self, connection_string, baudrate, two_way_switches, three_way_switches,lidar_angle=lidar_angle)
         # Drone virtual coordinates
         self._drone_x = 0
         self._drone_y = 0
@@ -27,7 +26,7 @@ class VirtualDrone(InspectionDrone):
         self._local_frame = self._init_local_frame()
         self.lidar = VirtualDroneLidarSensors(lidar_angle)
         self._corridor_detected = False
-        self._time_last_corridor_detected
+        self._time_last_corridor_detected = -1
     def _init_local_frame(self):
         """
         Initialize the local frame used to create virtual drone positions
