@@ -75,17 +75,17 @@ while drone.mission_running():
         first_detection = False
     if drone.corridor_detected() and drone.is_in_guided_mode():
         drone.lidar.update_path(drone.corridor_detected())
-        if drone.lidar.State == LEFT:  # strafe left
+        if drone.lidar.state == LEFT:  # strafe left
             drone.send_mavlink_go_left(Speed)
-        elif drone.lidar.State == RIGHT:  # strafe right
+        elif drone.lidar.state == RIGHT:  # strafe right
             drone.send_mavlink_go_right(Speed)
-        elif drone.lidar.State == FORWARD:  # go forward
+        elif drone.lidar.state == FORWARD:  # go forward
             drone.send_mavlink_go_forward(Speed)
-        elif drone.lidar.State == BACKWARD:  # go backward
+        elif drone.lidar.state == BACKWARD:  # go backward
             drone.send_mavlink_go_backward(Speed)
-        elif drone.lidar.State == TURN:  # turn
+        elif drone.lidar.state == TURN:  # turn
             drone.send_mavlink_right_rotate(10)
-        elif drone.lidar.State == STOP:  # stop
+        elif drone.lidar.state == STOP:  # stop
             drone.send_mavlink_stay_stationary()
     if not drone.corridor_detected() and drone.is_in_guided_mode()\
             and drone.time_since_last_corridor_detected() > 3 and not simulation:  # obstacle avoided IRL
