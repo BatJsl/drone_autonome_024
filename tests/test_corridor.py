@@ -14,6 +14,7 @@ sys.path.insert(0, '../obstacles')
 from virtual_drone import VirtualDrone
 from inspection_drone import InspectionDrone
 from corridor import CorridorObstacle
+form drone_sensors import State
 
 simulation = True
 
