@@ -13,7 +13,7 @@ class VirtualDrone(InspectionDrone):
     """
     def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
                  lidar_angle):
-        InspectionDrone.__init__(self, connection_string, baudrate, two_way_switches, three_way_switches,lidar_angle=lidar_angle)
+        InspectionDrone.__init__(self, connection_string, baudrate, two_way_switches, three_way_switches)
         # Drone virtual coordinates
         self._drone_x = 0
         self._drone_y = 0
