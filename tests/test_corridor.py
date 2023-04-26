@@ -75,7 +75,7 @@ while drone.mission_running():
         first_detection = False
     if drone.corridor_detected() and drone.is_in_guided_mode():
         drone.lidar.update_path(drone.corridor_detected())
-        if drone.lidar.state == LEFT:  # strafe left
+        if drone.lidar.state == State.LEFT:  # strafe left
             drone.send_mavlink_go_left(Speed)
         elif drone.lidar.state == RIGHT:  # strafe right
             drone.send_mavlink_go_right(Speed)

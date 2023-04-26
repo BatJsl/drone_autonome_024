@@ -1,5 +1,5 @@
 from virtual_tf_mini import VirtualTFMiniPlus
-from drone_sensors import DroneLidarSensors
+from drone_sensors import DroneLidarSensors, State
 
 
 def _init_lidar_sensors(lidar_angle):
