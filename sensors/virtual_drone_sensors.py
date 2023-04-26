@@ -9,9 +9,11 @@ class VirtualDroneLidarSensors(object):
     Used to deal with multiple sensors on the drone
     """
     def __init__(self, lidar_angle):
+
         self._lidar_number = len(lidar_angle)  # Number of lidar sensors
         # Initialize a list with all the lidar sensors
         self.lidar_sensors = self._init_lidar_sensors(lidar_angle)
+        DroneLidarSensors.__init__(self.lidar_sensors)
     def _init_lidar_sensors(self, lidar_angle):
         """
         Initialize a list of lidar sensors with their address and angle
