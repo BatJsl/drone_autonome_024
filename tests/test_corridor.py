@@ -99,3 +99,5 @@ while drone.mission_running():
     if drone.time_since_last_corridor_detected() > 60:
         drone.abort_mission()
     time.sleep(0.1)
+
+print("Fini")
