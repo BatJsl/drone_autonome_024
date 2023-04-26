@@ -24,7 +24,7 @@ class DroneLidarSensors(object):
 
 
     def lidar_reading(self):
-        for tfmini in tfminis :
+        for tfmini in self.tfminis:
             if tfmini.lidar_reading():
                 return True
         return False
