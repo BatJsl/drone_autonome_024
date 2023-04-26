@@ -5,7 +5,8 @@ from dronekit import connect, VehicleMode
 from pymavlink import mavutil
 from rc_switch import Switch
 sys.path.insert(0, '../sensors')
-from drone_sensors import ThreeLidarSensorsDetection
+from drone_sensors import DroneLidarSensors
+from tf_mini import TFMiniPlus
 
 
 class InspectionDrone(object):
@@ -13,8 +14,7 @@ class InspectionDrone(object):
     InspectionDrone class to interact with the drone
     Relies on the dronekit vehicle class
     """
-    def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
-                 lidar_address=None, lidar_angle=None, critical_distance_lidar=300):
+    def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches):
         """
         Constructor: initialize a vehicle instance
         Inputs:
@@ -24,7 +24,6 @@ class InspectionDrone(object):
         - three_way_switches: list of three way switches on the RC Transmitter
         - lidar_address: list of I2C addresses
         - lidar_angle: list of angles between the drone and the lidar axis
-        - critical_distance_lidar: distance of obstacle detection
         """
         # Connection RaspberryPi/Pixhawk
         try:
@@ -72,8 +71,6 @@ class InspectionDrone(object):
         self._three_way_switches = three_way_switches
         self._start_time = time.time()
         self._mission_start_time = 0
-        self._obstacle_detected = False
-        self._time_last_obstacle_detected = None
         self._elapsed_time_connexion = time.time() - self._start_time
         self._elapsed_time_mission = 0
         self._mission_running = False
@@ -82,7 +79,12 @@ class InspectionDrone(object):
         self._yaw_before_rotation = 0
         self._yaw = 0
         # Initialize sensors
-        self.lidar = ThreeLidarSensorsDetection(lidar_address, lidar_angle, critical_distance_lidar)
+        # Front_sensor = TFMiniPlus(0x10, 0)
+        # Left_sensor = TFMiniPlus(0x12, 0)
+        # Right_sensor = TFMiniPlus(0x11, 0)
+        # Back_sensor = TFMiniPlus(0x13, 0)
+        # tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
+        # self.lidar = DroneLidarSensors(tfminis)
 
     def update_switch_states(self):
         """
@@ -112,7 +114,7 @@ class InspectionDrone(object):
         if use_lidar and self.lidar.read_distance() and debug:
             print("Lidar range:" + str(self.lidar.get_distance()))
         if use_lidar and self.lidar.critical_distance_reached():
-            if self.obstacle_detected():
+            if self.corridor_detected():
                 self._time_last_obstacle_detected = time.time()
             self._obstacle_detected = True
         else:
@@ -141,11 +143,11 @@ class InspectionDrone(object):
             else:
                 self.lidar._obstacle_detected_right = False
 
-    def time_since_last_obstacle_detected(self):
-        if self._time_last_obstacle_detected is None or self.obstacle_detected():
+    def time_since_last_corridor_detected(self):
+        if self._time_last_corridor_detected is None or self.corridor_detected():
             return -1
         else:
-            return time.time() - self._time_last_obstacle_detected
+            return time.time() - self._time_last_corridor_detected
 
     def do_lidar_reading(self):
         """
@@ -154,8 +156,8 @@ class InspectionDrone(object):
         """
         return self.lidar.lidar_reading()
 
-    def obstacle_detected(self):
-        return self._obstacle_detected
+    def corridor_detected(self):
+        return self.lidar.corridor_detected()
 
     def update_time(self):
         """
@@ -348,9 +350,9 @@ class InspectionDrone(object):
     # Functions to access the drone parameters
     def get_distance(self):
         """
-        Return the last distance read
+        Return the last distances read
         """
-        return self.lidar.get_distance()
+        return self.lidar.get_distances()
 
     def get_velocity(self):
         return self.vehicle.velocity

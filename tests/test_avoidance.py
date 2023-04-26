@@ -61,29 +61,29 @@ while drone.mission_running():
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
             drone.update_side_detection(use_lidar=True, debug=True)
-    if drone.obstacle_detected() and drone.is_in_auto_mode():  # obstacle detected in front of the drone IRL
+    if drone.corridor_detected() and drone.is_in_auto_mode():  # obstacle detected in front of the drone IRL
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
-    if drone.obstacle_detected() and simulation and first_detection:  # obstacle detected in front of the drone in simulation
+    if drone.corridor_detected() and simulation and first_detection:  # obstacle detected in front of the drone in simulation
         print("Obstacle detected")
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
         first_detection = False
-    if drone.obstacle_detected() and drone.is_in_guided_mode():
-        drone.lidar.update_path(drone.obstacle_detected())
+    if drone.corridor_detected() and drone.is_in_guided_mode():
+        drone.lidar.update_path(drone.corridor_detected())
         if drone.lidar.go_left:  # no obstacle left
             drone.send_mavlink_go_left(0.5)
         elif drone.lidar.go_right:  # no obstacle right
             drone.send_mavlink_go_right(0.5)
-    if not drone.obstacle_detected() and drone.is_in_guided_mode()\
+    if not drone.corridor_detected() and drone.is_in_guided_mode()\
             and drone.time_since_last_obstacle_detected() > 3 and not simulation:  # obstacle avoided IRL
         drone.set_auto_mode()  # resume mission
-        drone.lidar.update_path(drone.obstacle_detected())
-    if not drone.obstacle_detected() and drone.is_in_guided_mode() \
+        drone.lidar.update_path(drone.corridor_detected())
+    if not drone.corridor_detected() and drone.is_in_guided_mode() \
             and drone.time_since_last_obstacle_detected() > 3 and simulation:  # obstacle avoided simulator
         first_detection = True  # resume mission
-        drone.lidar.update_path(drone.obstacle_detected())
-    if not drone.obstacle_detected() and simulation and first_detection:  # drone move forward in simulation
+        drone.lidar.update_path(drone.corridor_detected())
+    if not drone.corridor_detected() and simulation and first_detection:  # drone move forward in simulation
         drone.send_mavlink_go_forward(0.5)
     if drone.time_since_last_obstacle_detected() > 60:
         drone.abort_mission()

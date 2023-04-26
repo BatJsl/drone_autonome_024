@@ -29,14 +29,13 @@ if connection_string is None:
 if simulation:
     drone = VirtualDrone(connection_string=connection_string, baudrate=115200,
                          two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                         lidar_angle=[0, 90, -90, 180], critical_distance_lidar=100)
+                         lidar_angle=[-90, 0, 90, 180])
     first_detection = True
 
 else:
     drone = InspectionDrone(connection_string, baudrate=115200,
                             two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                            lidar_angle=[0, 90, -90], lidar_address=[0x10, 0x12, 0x11],
-                            critical_distance_lidar=200)
+                            lidar_angle=[-90, 0, 90, 180], lidar_address=[0x12, 0x10, 0x11, 0x13])
 
 
 # Init obstacles
@@ -45,6 +44,10 @@ y0 = 1000
 length = 2000
 angle = -45
 width_corridor = 300
+
+#Base velocity :
+
+Speed = .1
 
 corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
 walls = corridor.walls_corridor()
@@ -60,34 +63,38 @@ while drone.mission_running():
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         if simulation:
             drone.update_detection(use_lidar=True, debug=True, walls=walls)  # distance measure
-            drone.update_side_detection(debug=True, walls=walls)
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
-            drone.update_side_detection(use_lidar=True, debug=True)
-    if drone.obstacle_detected() and drone.is_in_auto_mode():  # obstacle detected in front of the drone IRL
+    if drone.corridor_detected() and drone.is_in_auto_mode():  # corridor detected IRL
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
-    if drone.obstacle_detected() and simulation and first_detection:  # obstacle detected in front of the drone in simulation
-        print("Obstacle detected")
+    if drone.corridor_detected() and simulation and first_detection:  # corridor detected in front of the drone in simulation
+        print("Corridor detected")
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
         first_detection = False
-    if drone.obstacle_detected() and drone.is_in_guided_mode():
-        drone.lidar.update_path(drone.obstacle_detected())
-        if drone.lidar.go_left:  # no obstacle left
-            drone.send_mavlink_go_left(0.5)
-        elif drone.lidar.go_right:  # no obstacle right
-            drone.send_mavlink_go_right(0.5)
-    if not drone.obstacle_detected() and drone.is_in_guided_mode()\
-            and drone.time_since_last_obstacle_detected() > 3 and not simulation:  # obstacle avoided IRL
-        drone.set_auto_mode()  # resume mission
-        drone.lidar.update_path(drone.obstacle_detected())
-    if not drone.obstacle_detected() and drone.is_in_guided_mode() \
+    if drone.corridor_detected() and drone.is_in_guided_mode():
+        drone.lidar.update_path(drone.corridor_detected())
+        if drone.lidar.State == LEFT:  # strafe left
+            drone.send_mavlink_go_left(Speed)
+        elif drone.lidar.State == RIGHT:  # strafe right
+            drone.send_mavlink_go_right(Speed)
+        elif drone.lidar.State == FORWARD:  # go forward
+            drone.send_mavlink_go_forward(Speed)
+        elif drone.lidar.State == BACKWARD:  # go backward
+            drone.send_mavlink_go_backward(Speed)
+        elif drone.lidar.State == TURN:  # turn
+            drone.send_mavlink_right_rotate(10)
+        elif drone.lidar.State == STOP:  # stop
+            drone.send_mavlink_stay_stationary()
+    if not drone.corridor_detected() and drone.is_in_guided_mode()\
+            and drone.time_since_last_corridor_detected() > 3 and not simulation:  # obstacle avoided IRL
+        drone.send_mavlink_stay_stationary()
+        drone.lidar.update_path(drone.corridor_detected())
+    if not drone.corridor_detected() and drone.is_in_guided_mode() \
             and drone.time_since_last_obstacle_detected() > 3 and simulation:  # obstacle avoided simulator
         first_detection = True  # resume mission
-        drone.lidar.update_path(drone.obstacle_detected())
-    if not drone.obstacle_detected() and simulation and first_detection:  # drone move forward in simulation
-        drone.send_mavlink_go_forward(0.5)
+        drone.lidar.update_path(drone.corridor_detected())
     if drone.time_since_last_obstacle_detected() > 60:
         drone.abort_mission()
     time.sleep(0.1)
