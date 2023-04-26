@@ -79,12 +79,12 @@ class InspectionDrone(object):
         self._yaw_before_rotation = 0
         self._yaw = 0
         # Initialize sensors
-        Front_sensor = TFMiniPlus(0x10, 0)
-        Left_sensor = TFMiniPlus(0x12, 0)
-        Right_sensor = TFMiniPlus(0x11, 0)
-        Back_sensor = TFMiniPlus(0x13, 0)
-        tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
-        self.lidar = DroneLidarSensors(tfminis)
+        # Front_sensor = TFMiniPlus(0x10, 0)
+        # Left_sensor = TFMiniPlus(0x12, 0)
+        # Right_sensor = TFMiniPlus(0x11, 0)
+        # Back_sensor = TFMiniPlus(0x13, 0)
+        # tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
+        # self.lidar = DroneLidarSensors(tfminis)
 
     def update_switch_states(self):
         """
