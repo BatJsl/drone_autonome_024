@@ -16,7 +16,7 @@ class RangeSensor(object):
         self._start_time = time.time()  # stores the time at which the object was created (in ms)
         self.time_log = [time.time() - self._start_time]  # stores the time the range was stored in the log (in ms)
         self.log = [0]  # stores range values for visualization
-
+        self._time_between_readings = 20
 
     def get_distance(self):
         """Returns the last distance read by the sensor"""
@@ -31,3 +31,9 @@ class RangeSensor(object):
 
     def time_since_last_reading(self):
         return time.time()-self._start_time-self.time_log[-1]
+
+    def lidar_reading(self):
+        """
+        Check if the time since the last reading is superior to the fixed time between two readings
+        """
+        return self.time_since_last_reading() > self._time_between_readings

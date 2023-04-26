@@ -113,35 +113,13 @@ class InspectionDrone(object):
         # Debug mode: read and print distance from sensor
         if use_lidar and self.lidar.read_distance() and debug:
             print("Lidar range:" + str(self.lidar.get_distance()))
-        if use_lidar and self.lidar.critical_distance_reached():
+        if use_lidar:
             if self.corridor_detected():
-                self._time_last_obstacle_detected = time.time()
-            self._obstacle_detected = True
+                self._time_last_corridor_detected = time.time()
+            self._corridor_detected = True
         else:
-            self._obstacle_detected = False
+            self._corridor_detected = False
 
-    def update_side_detection(self, use_lidar=True, debug=False):
-        """
-        Read the distance returned by right and left sensors and check if an obstacle is detected
-        """
-        # Detection from a left lidar
-        if use_lidar and self.lidar.get_left_lidar() is not None:
-            # Debug mode: read and print distance from sensor
-            if self.lidar.read_left_distance() and debug:
-                print("Left lidar range:" + str(self.lidar.get_left_lidar().get_distance()))
-            if self.lidar.get_left_lidar().critical_distance_reached():
-                self.lidar._obstacle_detected_left = True
-            else:
-                self.lidar._obstacle_detected_left = False
-        # Detection from a right lidar
-        if use_lidar and self.lidar.get_right_lidar() is not None:
-            # Debug mode: read and print distance from sensor
-            if self.lidar.read_right_distance() and debug:
-                print("Right lidar range:" + str(self.lidar.get_right_lidar().get_distance()))
-            if self.lidar.get_right_lidar().critical_distance_reached():
-                self.lidar._obstacle_detected_right = True
-            else:
-                self.lidar._obstacle_detected_right = False
 
     def time_since_last_corridor_detected(self):
         if self._time_last_corridor_detected is None or self.corridor_detected():
