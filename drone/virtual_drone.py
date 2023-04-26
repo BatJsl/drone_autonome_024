@@ -64,8 +64,6 @@ class VirtualDrone(InspectionDrone):
         self._update_virtual_position()
         return self._drone_x, self._drone_y
 
-    def corridor_detected(self):
-        return self.lidar
 
     def update_lidars(self, use_lidar=True, debug=False, walls=None):
         """

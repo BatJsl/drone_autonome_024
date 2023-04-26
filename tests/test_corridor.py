@@ -93,9 +93,9 @@ while drone.mission_running():
         drone.send_mavlink_stay_stationary()
         drone.lidar.update_path(drone.corridor_detected())
     if not drone.corridor_detected() and drone.is_in_guided_mode() \
-            and drone.time_since_last_obstacle_detected() > 3 and simulation:  # obstacle avoided simulator
+            and drone.time_since_last_corridor_detected() > 3 and simulation:  # obstacle avoided simulator
         first_detection = True  # resume mission
         drone.lidar.update_path(drone.corridor_detected())
-    if drone.time_since_last_obstacle_detected() > 60:
+    if drone.time_since_last_corridor_detected() > 60:
         drone.abort_mission()
     time.sleep(0.1)
