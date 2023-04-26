@@ -79,7 +79,7 @@
       <workItem from="1682084632062" duration="1544000" />
       <workItem from="1682265202027" duration="5305000" />
       <workItem from="1682350597136" duration="3702000" />
-      <workItem from="1682496083527" duration="942000" />
+      <workItem from="1682496083527" duration="1272000" />
     </task>
     <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
       <created>1680182712187</created>
@@ -158,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682335525590</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="tests sur tests2_lidars">
+      <created>1682497437218</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682497437218</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
