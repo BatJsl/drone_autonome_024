@@ -113,7 +113,7 @@ class InspectionDrone(object):
         # Debug mode: read and print distance from sensor
         if use_lidar and self.lidar.read_distance() and debug:
             print("Lidar range:" + str(self.lidar.get_distance()))
-        if use_lidar and self.lidar.critical_distance_reached():
+        if use_lidar:
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
             self._corridor_detected = True
