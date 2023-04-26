@@ -3,7 +3,7 @@ from drone_sensors import DroneLidarSensors
 
 
 
-class VirtualDroneLidarSensors(object):
+class VirtualDroneLidarSensors(DroneLidarSensors):
     """
     Class of lidar sensors
     Used to deal with multiple sensors on the drone
