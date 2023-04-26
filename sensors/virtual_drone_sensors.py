@@ -20,7 +20,7 @@ class VirtualDroneLidarSensors(DroneLidarSensors):
     Used to deal with multiple sensors on the drone
     """
     def __init__(self, lidar_angle):
-        DroneLidarSensors.__init__(_init_lidar_sensors(lidar_angle))
+        DroneLidarSensors.__init__(self,_init_lidar_sensors(lidar_angle))
 
 
     def read_distances(self, drone_x, drone_y, drone_angle, walls):
