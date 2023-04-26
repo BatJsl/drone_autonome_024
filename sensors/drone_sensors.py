@@ -22,6 +22,7 @@ class DroneLidarSensors(object):
         self.distances = []
         self.state = State.STOP
 
+
     def lidar_reading(self):
         for tfmini in tfminis :
             if tfmini.lidar_reading():
