@@ -1,0 +1,26 @@
+Index: tests/test_avoidance.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353\n# mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551\n# python test_avoidance.py --connect udp:127.0.0.1:14551\n\"\"\"\nTest obstacle avoidance with three lidar sensors\nVersion for simulator (simulation = True) and reality (simulation = False)\n\"\"\"\nimport sys\nimport time\nimport argparse\nsys.path.insert(0, '../drone')\nsys.path.insert(0, '../obstacles')\nfrom virtual_drone import VirtualDrone\nfrom wall import WallObstacle\nfrom inspection_drone import InspectionDrone\n\n\nsimulation = True\n\nparser = argparse.ArgumentParser(description='commands')\nparser.add_argument('--connect')\nargs = parser.parse_args()\n\nconnection_string = args.connect\n\nif connection_string is None:\n    connection_string = '/dev/serial0'\n\nif simulation:\n    drone = VirtualDrone(connection_string=connection_string, baudrate=115200,\n                         two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],\n                         lidar_angle=[0, 90, -90], critical_distance_lidar=100)\n    first_detection = True\n\nelse:\n    drone = InspectionDrone(connection_string, baudrate=115200,\n                            two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],\n                            lidar_angle=[0, 90, -90], lidar_address=[0x10, 0x12, 0x11],\n                            critical_distance_lidar=200)\n\n\n# Init obstacles\nwall1 = WallObstacle(-1000, 1000, 2000, 0)\nwall2 = WallObstacle(-300, 500, 5000, 90)\nwall3 = WallObstacle(-1000, 1200, 2000, 90)\nwall4 = WallObstacle(-1000, -1000, 2000, 0)\nwalls = [wall1, wall2]\n\ndrone.launch_mission()\n# Simulation : arm and takeoff the drone\nif simulation:\n    drone.arm_and_takeoff(2)\n\nwhile drone.mission_running():\n    drone.update_time()  # update time since connexion and mission's start\n    drone.update_switch_states()  # update the RC transmitter switch state\n    if drone.do_lidar_reading():  # ask a reading every 20 ms\n        if simulation:\n            drone.update_detection(use_lidar=True, debug=True, walls=walls)  # distance measure\n            drone.update_side_detection(debug=True, walls=walls)\n        else:\n            drone.update_detection(use_lidar=True, debug=True)  # distance measure\n            drone.update_side_detection(use_lidar=True, debug=True)\n    if drone.obstacle_detected() and drone.is_in_auto_mode():  # obstacle detected in front of the drone IRL\n        drone.set_guided_mode()\n        drone.send_mavlink_stay_stationary()\n    if drone.obstacle_detected() and simulation and first_detection:  # obstacle detected in front of the drone in simulation\n        print(\"Obstacle detected\")\n        drone.set_guided_mode()\n        drone.send_mavlink_stay_stationary()\n        first_detection = False\n    if drone.obstacle_detected() and drone.is_in_guided_mode():\n        drone.lidar.update_path(drone.obstacle_detected())\n        if drone.lidar.go_left:  # no obstacle left\n            drone.send_mavlink_go_left(0.5)\n        elif drone.lidar.go_right:  # no obstacle right\n            drone.send_mavlink_go_right(0.5)\n    if not drone.obstacle_detected() and drone.is_in_guided_mode()\\\n            and drone.time_since_last_obstacle_detected() > 3 and not simulation:  # obstacle avoided IRL\n        drone.set_auto_mode()  # resume mission\n        drone.lidar.update_path(drone.obstacle_detected())\n    if not drone.obstacle_detected() and drone.is_in_guided_mode() \\\n            and drone.time_since_last_obstacle_detected() > 3 and simulation:  # obstacle avoided simulator\n        first_detection = True  # resume mission\n        drone.lidar.update_path(drone.obstacle_detected())\n    if not drone.obstacle_detected() and simulation and first_detection:  # drone move forward in simulation\n        drone.send_mavlink_go_forward(0.5)\n    if drone.time_since_last_obstacle_detected() > 60:\n        drone.abort_mission()\n    time.sleep(0.1)\n
+===================================================================
+diff --git a/tests/test_avoidance.py b/tests/test_avoidance.py
+--- a/tests/test_avoidance.py	
++++ b/tests/test_avoidance.py	
+@@ -15,7 +15,7 @@
+ from inspection_drone import InspectionDrone
+ 
+ 
+-simulation = True
++simulation = False
+ 
+ parser = argparse.ArgumentParser(description='commands')
+ parser.add_argument('--connect')
+@@ -35,7 +35,7 @@
+ else:
+     drone = InspectionDrone(connection_string, baudrate=115200,
+                             two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
+-                            lidar_angle=[0, 90, -90], lidar_address=[0x10, 0x12, 0x11],
++                            lidar_angle=[0, 90, -90], lidar_address=[0x15, 0x16, 0x14],
+                             critical_distance_lidar=200)
+ 
+ 
