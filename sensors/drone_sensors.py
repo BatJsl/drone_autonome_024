@@ -18,6 +18,7 @@ class State(enum.Enum):
 class DroneLidarSensors(object):
     def __init__(self, tfminis):
         self.tfminis = tfminis
+        self._lidar_number = len(tfminis)
         self.distances = []
         self.state = State.STOP
 
@@ -32,7 +33,7 @@ class DroneLidarSensors(object):
         print("Left distance :", self.distances[0],'mm',"Front distance :", self.distances[1],'mm',"Right distance :", self.distances[2],'mm')
 
     def corridor_detected(self):
-        return self.distances != [] and sum(self.distances) >0
+        return self.distances != [] and sum(self.distances) > 0
 
     def generate_instructions_3sensors(self):
         front_distance = max(1,self.distances[1])
@@ -81,3 +82,9 @@ class DroneLidarSensors(object):
             else:
                 self.state = State.LEFT
 
+    def update_path(self, corridor_detected):
+        if corridor_detected:
+            if self._lidar_number == 3:
+                self.generate_instructions_3sensors()
+            if self._lidar_number == 4:
+                self.generate_instructions_4sensors(.5)
