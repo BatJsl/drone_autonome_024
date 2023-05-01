@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ce43ec3-c4ec-4abf-a0b4-a2ac5c0ebffc" name="Changes" comment="tests sur tests2_lidars" />
+    <list default="true" id="9ce43ec3-c4ec-4abf-a0b4-a2ac5c0ebffc" name="Changes" comment="reglages pour pull">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/val_lidar_test.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +82,7 @@
       <workItem from="1682084632062" duration="1544000" />
       <workItem from="1682265202027" duration="5305000" />
       <workItem from="1682350597136" duration="3702000" />
-      <workItem from="1682496083527" duration="1272000" />
+      <workItem from="1682496083527" duration="2443000" />
     </task>
     <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
       <created>1680182712187</created>
@@ -165,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682497437218</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="reglages pour pull">
+      <created>1682497558236</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682497558236</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +273,8 @@
     <MESSAGE value="version finale test_corridor.py" />
     <MESSAGE value="modif update_ertical_path pour avoir un intervalle de stabilisation verticale" />
     <MESSAGE value="tests sur tests2_lidars" />
-    <option name="LAST_COMMIT_MESSAGE" value="tests sur tests2_lidars" />
+    <MESSAGE value="reglages pour pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="reglages pour pull" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/projet_drone_024$test0.coverage" NAME="test0 Coverage Results" MODIFIED="1682333072736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
