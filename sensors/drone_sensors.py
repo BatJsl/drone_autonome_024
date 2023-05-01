@@ -43,6 +43,10 @@ class DroneLidarSensors(object):
         return self.distances != [] and sum(self.distances) > 0
 
     def generate_instructions_3sensors(self):
+        """
+        Changes the state of the drone according to the lidar readings
+        """
+
         front_distance = max(1,self.distances[1])
         left_distance = max(1,self.distances[0])
         right_distance = max(1,self.distances[2])
@@ -58,6 +62,9 @@ class DroneLidarSensors(object):
                 self.state = State.FORWARD
 
     def generate_instructions_4sensors(self,tresh):
+        """
+        Changes the state of the drone according to the lidar readings
+        """
         front_distance = max(1,self.distances[1])
         back_distance = max(1,self.distances[3])
         left_distance = max(1,self.distances[0])

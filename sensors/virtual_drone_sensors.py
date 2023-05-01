@@ -18,6 +18,7 @@ class VirtualDroneLidarSensors(DroneLidarSensors):
     """
     Class of lidar sensors
     Used to deal with multiple sensors on the drone
+    Specific to virtual environment
     """
     def __init__(self, lidar_angle):
         DroneLidarSensors.__init__(self,_init_lidar_sensors(lidar_angle))
