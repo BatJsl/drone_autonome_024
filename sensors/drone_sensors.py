@@ -60,13 +60,11 @@ class DroneLidarSensors(object):
                     self.state = State.RIGHT
             else:
                 self.state = State.FORWARD
-"""
-    def generate_instructions_4sensors(self,tresh):
+
+    def generate_instructions_4sensors_wip(self,tresh):
         """
-"""
         Changes the state of the drone according to the lidar readings
         """
-"""
         front_distance = max(1,self.distances[1])
         back_distance = max(1,self.distances[3])
         left_distance = max(1,self.distances[0])
@@ -97,7 +95,7 @@ class DroneLidarSensors(object):
                 self.state = State.RIGHT
             else:
                 self.state = State.LEFT
-"""
+
     def update_path(self, corridor_detected):
         if corridor_detected:
             if self._lidar_number == 3:
