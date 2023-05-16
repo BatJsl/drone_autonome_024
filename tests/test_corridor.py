@@ -97,7 +97,7 @@ while drone.mission_running():
         first_detection = True  # resume mission
         drone.lidar.update_path(drone.corridor_detected())
     if drone.time_since_last_corridor_detected() > 60:
-        print("No corridor detected", drone.lidar.distances())
+        print("No corridor detected", drone.lidar.distances)
         drone.abort_mission()
     time.sleep(0.1)
 
