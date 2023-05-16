@@ -22,7 +22,7 @@ class VirtualTFMiniPlus(RangeSensor):
         self._name = "Lidar"
         self.angle = angle
         # Ask a reading every 20 ms
-        self._time_between_readings = 0.02
+        self._time_between_readings = 0.03
         self._distance_detection = distance_detection
 
     def read_distance(self, x_drone=0, y_drone=0, angle_sensor=0, walls=None):
