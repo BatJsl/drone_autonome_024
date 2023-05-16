@@ -42,7 +42,7 @@ else:
 # Init obstacles
 x0 = -1000
 y0 = 1000
-length = 2000
+length = 20000
 angle = -45
 width_corridor = 300
 
