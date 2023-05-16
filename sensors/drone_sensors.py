@@ -42,7 +42,7 @@ class DroneLidarSensors(object):
     def corridor_detected(self):
         return self.distances != [] and sum(self.distances) > 0
 
-    def generate_instructions_3sensors(self):
+    def generate_instructions_4sensors(self):
         """
         Changes the state of the drone according to the lidar readings
         """
@@ -60,7 +60,7 @@ class DroneLidarSensors(object):
                     self.state = State.RIGHT
             else:
                 self.state = State.FORWARD
-
+"""
     def generate_instructions_4sensors(self,tresh):
         """
         Changes the state of the drone according to the lidar readings
@@ -95,7 +95,7 @@ class DroneLidarSensors(object):
                 self.state = State.RIGHT
             else:
                 self.state = State.LEFT
-
+"""
     def update_path(self, corridor_detected):
         if corridor_detected:
             if self._lidar_number == 3:
