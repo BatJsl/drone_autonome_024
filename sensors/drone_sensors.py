@@ -32,7 +32,6 @@ class DroneLidarSensors(object):
     def get_distances(self):
         self.distances = []
         for tfmini in self.tfminis:
-            tfmini.read_distance()
             self.distances.append(tfmini.get_distance())
             print("in get distances", self.distances)
 
