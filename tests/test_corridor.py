@@ -66,9 +66,6 @@ while drone.mission_running():
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
-    if drone.corridor_detected() and drone.is_in_auto_mode():  # corridor detected IRL
-        drone.set_guided_mode()
-        drone.send_mavlink_stay_stationary()
     if drone.corridor_detected() and simulation and first_detection:  # corridor detected in front of the drone in simulation
         print("Corridor detected")
         drone.set_guided_mode()
