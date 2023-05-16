@@ -71,7 +71,7 @@ class VirtualDrone(InspectionDrone):
         The distance is read relatively to the input list of obstacles
         """
         self._update_virtual_position()
-        if self.lidar.read_distance(self._drone_x, self._drone_y, self.get_angle(), walls) and debug:
+        if self.lidar.read_distances(self._drone_x, self._drone_y, self.get_angle(), walls) and debug:
             print("Lidar range:" + str(self.lidar.get_distances()))
         if use_lidar :
             self.lidar.read_distances(self._drone_x, self._drone_y, self.get_angle(), walls)
