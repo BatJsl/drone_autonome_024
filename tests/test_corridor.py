@@ -48,7 +48,7 @@ width_corridor = 300
 
 #Base velocity :
 
-Speed = .1
+Speed = 1
 
 corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
 walls = corridor.walls_corridor()
@@ -64,7 +64,6 @@ while drone.mission_running():
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         if simulation:
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
-            print("detection updated")
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
     if drone.corridor_detected() and drone.is_in_auto_mode():  # corridor detected IRL
