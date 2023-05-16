@@ -65,7 +65,7 @@ class VirtualDrone(InspectionDrone):
         return self._drone_x, self._drone_y
 
 
-    def update_lidars(self, use_lidar=True, debug=False, walls=None):
+    def update_detection(self, use_lidar=True, debug=False, walls=None):
         """
         Read the distance returned by the sensor and return if an obstacle is detected
         The distance is read relatively to the input list of obstacles
