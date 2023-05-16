@@ -101,4 +101,4 @@ class DroneLidarSensors(object):
             if self._lidar_number == 3:
                 self.generate_instructions_3sensors()
             if self._lidar_number == 4:
-                self.generate_instructions_4sensors(.5)
+                self.generate_instructions_4sensors()
