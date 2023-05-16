@@ -77,9 +77,9 @@ class VirtualDrone(InspectionDrone):
             self.lidar.read_distances(self._drone_x, self._drone_y, self.get_angle(), walls)
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
-            self._corridor_detected = True
-        else:
-            self._corridor_detected = False
+                self._corridor_detected = True
+            else:
+                self._corridor_detected = False
     def arm_and_takeoff(self, tgt_altitude):
         """
         Function from the dronekit documentation used to arm and takeoff the drone on the simulator
