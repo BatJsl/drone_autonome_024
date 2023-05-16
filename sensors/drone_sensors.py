@@ -63,8 +63,10 @@ class DroneLidarSensors(object):
 """
     def generate_instructions_4sensors(self,tresh):
         """
+"""
         Changes the state of the drone according to the lidar readings
         """
+"""
         front_distance = max(1,self.distances[1])
         back_distance = max(1,self.distances[3])
         left_distance = max(1,self.distances[0])
