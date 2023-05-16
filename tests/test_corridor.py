@@ -64,6 +64,7 @@ while drone.mission_running():
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         if simulation:
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
+            print("detection updated")
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
     if drone.corridor_detected() and simulation and first_detection:  # corridor detected in front of the drone in simulation
