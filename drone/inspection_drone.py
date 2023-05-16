@@ -116,9 +116,9 @@ class InspectionDrone(object):
         if use_lidar:
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
-            self._corridor_detected = True
-        else:
-            self._corridor_detected = False
+                self._corridor_detected = True
+            else:
+                self._corridor_detected = False
 
 
     def time_since_last_corridor_detected(self):
