@@ -97,8 +97,10 @@ while drone.mission_running():
             and drone.time_since_last_corridor_detected() > 3 and simulation:  # obstacle avoided simulator
         first_detection = True  # resume mission
         drone.lidar.update_path(drone.corridor_detected())
+    """
     if drone.time_since_last_corridor_detected() > 60:
         print("No corridor detected", drone.lidar.distances)
         drone.abort_mission()
+    """
     time.sleep(0.1)
 
