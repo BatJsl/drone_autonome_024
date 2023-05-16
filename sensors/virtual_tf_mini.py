@@ -49,12 +49,9 @@ class VirtualTFMiniPlus(RangeSensor):
                         # Only keep the obstacle with the minimum distance from the drone
                         if np.sqrt((x_i - x_drone) ** 2 + (y_i - y_drone) ** 2) < distance:
                             distance = np.sqrt((x_i - x_drone) ** 2 + (y_i - y_drone) ** 2)
-            # Check if the obstacle is within the sensor range
-            if distance <= self._distance_detection:
-                self.set_distance(distance)
-                return True
-            self.set_distance(0)
-            return False
+
+            self.set_distance(distance)
+            return True
 
     def _get_max_range_coordinates(self, x_drone, y_drone, angle_sensor):
         """
