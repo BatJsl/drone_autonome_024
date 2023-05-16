@@ -48,7 +48,7 @@ width_corridor = 300
 
 #Base velocity :
 
-Speed = 1
+Speed = .1
 
 corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
 walls = corridor.walls_corridor()
