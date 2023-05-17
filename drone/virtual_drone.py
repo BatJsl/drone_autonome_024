@@ -74,7 +74,6 @@ class VirtualDrone(InspectionDrone):
         if use_lidar :
             self.lidar.read_distances(self._drone_x, self._drone_y, self.get_angle(), walls)
             self.lidar.get_distances()
-            print("in update_detection", self.lidar.distances)
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
                 self._corridor_detected = True

@@ -64,12 +64,12 @@ while drone.mission_running():
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         if simulation:
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
-            print("detection updated")
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
     if drone.is_in_guided_mode():
         drone.lidar.update_path(drone.corridor_detected())
         drone.choose_direction(Speed)
+        print("in test corridor", drone.lidar.state)
     if not drone.corridor_detected() and drone.is_in_guided_mode()\
             and drone.time_since_last_corridor_detected() > 3 and not simulation:  # no corridor found IRL
         drone.send_mavlink_stay_stationary()
