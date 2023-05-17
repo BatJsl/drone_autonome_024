@@ -46,7 +46,10 @@ class DroneLidarSensors(object):
         """
         Changes the state of the drone according to the lidar readings
         """
-
+        self.distances = []
+        for tfmini in self.tfminis:
+            self.distances.append(tfmini.get_distance())
+            print("in get distances", self.distances)
         front_distance = max(1,self.distances[1])
         left_distance = max(1,self.distances[0])
         right_distance = max(1,self.distances[2])
