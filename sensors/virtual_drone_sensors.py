@@ -29,4 +29,4 @@ class VirtualDroneLidarSensors(DroneLidarSensors):
             sensor = self.tfminis[i]
             sensor_angle = sensor.angle
             sensor.read_distance(drone_x, drone_y, (drone_angle - sensor_angle) % 360, walls)
-            sensor.get_distance()
+            sensor.get_distances()
