@@ -6,6 +6,7 @@ from pymavlink import mavutil
 from rc_switch import Switch
 sys.path.insert(0, '../sensors')
 from drone_sensors import DroneLidarSensors
+from drone_sensors import State
 from tf_mini import TFMiniPlus
 
 
@@ -341,4 +342,18 @@ class InspectionDrone(object):
         Angle between the North and the front of the drone
         """
         return self._yaw
+
+    def choose_direction(self, Speed) :
+        if self.lidar.state == State.LEFT:  # strafe left
+            self.send_mavlink_go_left(Speed)
+        elif self.lidar.state == State.RIGHT:  # strafe right
+            self.send_mavlink_go_right(Speed)
+        elif self.lidar.state == State.FORWARD:  # go forward
+            self.send_mavlink_go_forward(Speed)
+        elif self.lidar.state == State.BACKWARD:  # go backward
+            self.send_mavlink_go_backward(Speed)
+        elif self.lidar.state == State.TURN:  # turn
+            self.send_mavlink_right_rotate(10)
+        elif self.lidar.state == State.STOP:  # stop
+            self.send_mavlink_stay_stationary()
       

@@ -98,7 +98,4 @@ class DroneLidarSensors(object):
 
     def update_path(self, corridor_detected):
         if corridor_detected:
-            if self._lidar_number == 3:
-                self.generate_instructions_3sensors()
-            if self._lidar_number == 4:
-                self.generate_instructions_4sensors()
+            self.generate_instructions_4sensors()

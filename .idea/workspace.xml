@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 10" />
+    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 10">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/drone/inspection_drone.py" beforeDir="false" afterPath="$PROJECT_DIR$/drone/inspection_drone.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +74,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9ce43ec3-c4ec-4abf-a0b4-a2ac5c0ebffc" name="Changes" comment="" />
+      <changelist id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 10" />
       <created>1680182558732</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -80,6 +85,8 @@
       <workItem from="1682265202027" duration="5305000" />
       <workItem from="1682350597136" duration="3702000" />
       <workItem from="1682496083527" duration="2443000" />
+      <workItem from="1684300863784" duration="15000" />
+      <workItem from="1684311879789" duration="1265000" />
     </task>
     <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
       <created>1680182712187</created>
@@ -312,7 +319,42 @@
       <option name="project" value="LOCAL" />
       <updated>1684233291866</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="To test 10">
+      <created>1684233754373</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1684233754373</updated>
+    </task>
+    <task id="LOCAL-00035" summary="To test 10">
+      <created>1684233833329</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1684233833329</updated>
+    </task>
+    <task id="LOCAL-00036" summary="To test 10">
+      <created>1684233940580</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1684233940580</updated>
+    </task>
+    <task id="LOCAL-00037" summary="To test 10">
+      <created>1684234018689</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1684234018689</updated>
+    </task>
+    <task id="LOCAL-00038" summary="To test 10">
+      <created>1684234036871</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1684234036871</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
