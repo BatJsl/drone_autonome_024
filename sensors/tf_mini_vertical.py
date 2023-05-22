@@ -88,9 +88,9 @@ class VerticalLidarsDetection(object):
         return self._obstacle_detected_down
 
     # Function to send the direction to go to the drone
-    def update_vertical_path(self):
+    def update_vertical_path_corridor(self):
         """
-        Function used to update the vertical path
+        Function used to update the vertical path in a corridor
         """
         # self.read_up_distance()
         # self.read_down_distance()
@@ -116,8 +116,13 @@ class VerticalLidarsDetection(object):
         if vertical_obstacle_detected:
             if self._obstacle_detected_up:
                 self._go_up = False
+                self._go_down = True
             if self._obstacle_detected_down:
                 self._go_down = False
+                self._go_up = True
+        else:
+            self._go_down = False
+            self._go_up = False
 
 
 

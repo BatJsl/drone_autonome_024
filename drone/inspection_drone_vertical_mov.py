@@ -10,7 +10,7 @@ from drone_sensors import ThreeLidarSensorsDetection
 from tf_mini_vertical import VerticalLidarsDetection
 
 
-class InspectionDroneVirtual(object):
+class InspectionDroneVertical(object):
     """
     InspectionDrone class to interact with the drone
     Relies on the dronekit vehicle class
@@ -124,6 +124,17 @@ class InspectionDroneVirtual(object):
             self._obstacle_detected = True
         else:
             self._obstacle_detected = False
+
+    def update_vertical_down_detection(self, debug=False):
+        # Debug mode: read and print distance from sensor
+        if self.vertical_lidars.read_down_distance() and debug:
+            print("Lidar range:" + str(self.vertical_lidars.get_down_distance()))
+        if self.vertical_lidars.get_down_lidar().critical_distance_reached():
+            if self.vertical_lidars.obstacle_detected_down():
+                self._time_last_obstacle_detected = time.time()
+            self.vertical_lidars._obstacle_detected_down = True
+        else:
+            self.vertical_lidars._obstacle_detected_down = False
 
     def update_side_detection(self, use_lidar=True, debug=False):
         """

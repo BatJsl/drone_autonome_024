@@ -1,3 +1,5 @@
+## Test for simulation in SITL, the distances measured by vertical sensors are given by lists of elements.
+
 import sys
 import time
 import argparse

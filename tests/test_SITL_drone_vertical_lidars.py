@@ -3,7 +3,7 @@
 # python test_drone_vertical_lidars.py --connect udp:127.0.0.1:14551
 
 """
-Test vertical movement with vertical lidars, simulation environment
+Test vertical movement with vertical lidars, simulation environment, more complex data input
 """
 
 import sys
