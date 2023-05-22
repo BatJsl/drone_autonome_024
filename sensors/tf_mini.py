@@ -6,11 +6,12 @@ DEFAULT_CRITICAL_DISTANCE = 100
 
 class TFMiniPlus(RangeSensor):
     """Class for a specific range sensor : the TFMini Plus"""
-    def __init__(self, address, angle=0, critical_distance=DEFAULT_CRITICAL_DISTANCE):
+    def __init__(self, address, angle=0, v_position=0, critical_distance=DEFAULT_CRITICAL_DISTANCE):
         """Constructor : can take as input the critical distance of the sensor under which we detect an obstacle"""
         RangeSensor.__init__(self, critical_distance)  # Calls the constructor of the parent class
         self._name = "Lidar"
         self.angle = angle  # Angle between the drone front axis and the lidar axis
+        self.v_position = v_position  # Vertical position of the sensor, for vertical drone positioning purposes
         self._address = address
         self._time_between_readings = 0.02  # Ask a reading every 20 ms
 
