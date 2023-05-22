@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drone/inspection_drone.py" beforeDir="false" afterPath="$PROJECT_DIR$/drone/inspection_drone.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="846d066a-386b-4e17-9e9e-9e55f03beaa0" />
+        <option name="accountId" value="39d28f99-a4a6-4432-b13a-d9877d0d64cc" />
         <option name="url" value="https://github.com/BatJsl/projet_drone_024.git" />
       </UrlAndAccount>
     </option>
@@ -86,7 +83,8 @@
       <workItem from="1682350597136" duration="3702000" />
       <workItem from="1682496083527" duration="2443000" />
       <workItem from="1684300863784" duration="15000" />
-      <workItem from="1684311879789" duration="1265000" />
+      <workItem from="1684311879789" duration="4231000" />
+      <workItem from="1684324388010" duration="1302000" />
     </task>
     <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
       <created>1680182712187</created>
@@ -354,7 +352,49 @@
       <option name="project" value="LOCAL" />
       <updated>1684234036871</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="To test 10">
+      <created>1684313418585</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1684313418585</updated>
+    </task>
+    <task id="LOCAL-00040" summary="To test 10">
+      <created>1684313605174</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1684313605174</updated>
+    </task>
+    <task id="LOCAL-00041" summary="To test 10">
+      <created>1684313780989</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1684313780989</updated>
+    </task>
+    <task id="LOCAL-00042" summary="To test 10">
+      <created>1684313876583</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1684313876583</updated>
+    </task>
+    <task id="LOCAL-00043" summary="To test 10">
+      <created>1684314078981</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1684314078981</updated>
+    </task>
+    <task id="LOCAL-00044" summary="To test 10">
+      <created>1684314397345</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1684314397345</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -7,6 +7,7 @@ Test flying in a corridor avoidance with four lidar sensors
 Version for simulator (simulation = True) and reality (simulation = False)
 """
 import time
+import typing
 import sys
 import argparse
 sys.path.insert(0, '../drone')
