@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensors/virtual_drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/virtual_drone_sensors.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +86,8 @@
       <workItem from="1684300863784" duration="15000" />
       <workItem from="1684311879789" duration="4231000" />
       <workItem from="1684324388010" duration="1302000" />
+      <workItem from="1684745924210" duration="3600000" />
+      <workItem from="1684758124135" duration="7853000" />
     </task>
     <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
       <created>1680182712187</created>
@@ -394,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684314397345</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="To test 10">
+      <created>1684745956086</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1684745956086</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
