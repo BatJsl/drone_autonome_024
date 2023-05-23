@@ -1,13 +1,13 @@
 import time
+from filter import Tresh_filter
 
 # -------- Parent range sensor class ---------
 DEFAULT_CRITICAL_DISTANCE = 100
-
-
+Filter = Tresh_filter(999, 1)
 class RangeSensor(object):
     """
     Class that defines a general range sensor.
-    It cannot read data because this function is specific to each sensors.
+    It cannot read data because this function is specific to each sensor.
     Thus this class cannot be used by itself but is very useful for the lidar and sonar child classes
     """
     def __init__(self):
@@ -25,7 +25,7 @@ class RangeSensor(object):
     def set_distance(self, distance_value):
         """Modifies the range value stored by the object.
         In the meantime, it stores this value and the time it was written in a list"""
-        self._range = distance_value
+        self._range = Filter.update(self._range, distance_value)
         self.log.append(distance_value)
         self.time_log.append(time.time() - self._start_time)
 
