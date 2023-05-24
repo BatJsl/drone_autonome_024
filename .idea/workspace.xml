@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11">
       <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,21 +94,7 @@
       <workItem from="1684324388010" duration="1302000" />
       <workItem from="1684745924210" duration="3600000" />
       <workItem from="1684758124135" duration="12345000" />
-      <workItem from="1684955244671" duration="1466000" />
-    </task>
-    <task id="LOCAL-00004" summary="Avancées sur la fonction &quot;draw_corridors&quot;">
-      <created>1680273296786</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1680273296786</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Fonction &quot;draw_corridor&quot; finie">
-      <created>1680287870278</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1680287870278</updated>
+      <workItem from="1684955244671" duration="1848000" />
     </task>
     <task id="LOCAL-00006" summary="arrivée de test_avoidance">
       <created>1680597006057</created>
@@ -440,7 +425,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684956447840</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="To test 11">
+      <created>1684956838075</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1684956838075</updated>
+    </task>
+    <task id="LOCAL-00054" summary="To test 11">
+      <created>1684957110995</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1684957110995</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

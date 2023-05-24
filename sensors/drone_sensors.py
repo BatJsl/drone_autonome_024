@@ -49,7 +49,7 @@ class DroneLidarSensors(object):
         self.distances = []
         for tfmini in self.tfminis:
             self.distances.append(tfmini.get_distance())
-            print("in get distances", self.distances)
+        print("in generate", self.distances)
         front_distance = max(1,self.distances[1])
         left_distance = max(1,self.distances[0])
         right_distance = max(1,self.distances[2])
