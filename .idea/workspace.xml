@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
-    </list>
+    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,21 +92,7 @@
       <workItem from="1684324388010" duration="1302000" />
       <workItem from="1684745924210" duration="3600000" />
       <workItem from="1684758124135" duration="12345000" />
-      <workItem from="1684955244671" duration="811000" />
-    </task>
-    <task id="LOCAL-00001" summary="Coller les codes de l'an dernier, et début de classe CorridorObstacle">
-      <created>1680182712187</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1680182712187</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Premier commit, avant la branche &quot;corridor&quot;">
-      <created>1680185067996</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1680185067996</updated>
+      <workItem from="1684955244671" duration="1149000" />
     </task>
     <task id="LOCAL-00003" summary="commit sur la nouvelle branche &quot;corridor_dev&quot;">
       <created>1680186087006</created>
@@ -433,7 +416,28 @@
       <option name="project" value="LOCAL" />
       <updated>1684956062401</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="To test 11">
+      <created>1684956138979</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1684956138979</updated>
+    </task>
+    <task id="LOCAL-00050" summary="To test 11">
+      <created>1684956189291</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1684956189291</updated>
+    </task>
+    <task id="LOCAL-00051" summary="To test 11">
+      <created>1684956263554</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1684956263554</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
