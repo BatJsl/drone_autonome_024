@@ -25,7 +25,8 @@ class RangeSensor(object):
     def set_distance(self, distance_value):
         """Modifies the range value stored by the object.
         In the meantime, it stores this value and the time it was written in a list"""
-        self._range = Filter.update(self._range, distance_value)
+        self._range = distance_value
+        #self._range = Filter.update(self._range, distance_value)
         self.log.append(distance_value)
         self.time_log.append(time.time() - self._start_time)
 
