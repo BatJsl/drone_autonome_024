@@ -54,15 +54,19 @@ class DroneLidarSensors(object):
         left_distance = max(1,self.distances[0])
         right_distance = max(1,self.distances[2])
         if front_distance < 2 * (left_distance + right_distance):
+            print("in generate instructions : turn")
             self.state = State.TURN
         else:
             if max(left_distance / right_distance, right_distance / left_distance) > 1.2:
                 if left_distance > right_distance:
                     self.state = State.LEFT
+                    print("in generate instructions : left")
                 else:
                     self.state = State.RIGHT
+                    print("in generate instructions : right")
             else:
                 self.state = State.FORWARD
+                print("in generate instructions : front")
 
     def generate_instructions_4sensors_wip(self,tresh):
         """
