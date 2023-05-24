@@ -77,8 +77,10 @@ while drone.mission_running():
     if not drone.corridor_detected() and drone.is_in_guided_mode() \
             and drone.time_since_last_corridor_detected() > 3 and simulation:  # no corridor found simulator
         first_detection = True  # resume mission
+    """
     if drone.time_since_last_corridor_detected() > 100:
         print("No corridor detected", drone.lidar.distances)
         drone.abort_mission()
+    """
     time.sleep(0.1)
 
