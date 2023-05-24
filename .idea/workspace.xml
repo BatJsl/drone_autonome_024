@@ -94,14 +94,7 @@
       <workItem from="1684324388010" duration="1302000" />
       <workItem from="1684745924210" duration="3600000" />
       <workItem from="1684758124135" duration="12345000" />
-      <workItem from="1684955244671" duration="1848000" />
-    </task>
-    <task id="LOCAL-00006" summary="arrivée de test_avoidance">
-      <created>1680597006057</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1680597006057</updated>
+      <workItem from="1684955244671" duration="2081000" />
     </task>
     <task id="LOCAL-00007" summary="inverse arrivée de test_avoidance">
       <created>1680597999207</created>
@@ -439,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684957110995</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="To test 11">
+      <created>1684957243878</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1684957243878</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

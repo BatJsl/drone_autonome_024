@@ -46,13 +46,9 @@ class DroneLidarSensors(object):
         """
         Changes the state of the drone according to the lidar readings
         """
-        self.distances = []
-        for tfmini in self.tfminis:
-            self.distances.append(tfmini.get_distance())
-        print("in generate", self.distances)
-        front_distance = max(1,self.distances[1])
-        left_distance = max(1,self.distances[0])
-        right_distance = max(1,self.distances[2])
+        front_distance = max(1, self.distances[1])
+        left_distance = max(1, self.distances[0])
+        right_distance = max(1, self.distances[2])
         if front_distance < 2 * (left_distance + right_distance):
             print("in generate instructions : turn")
             self.state = State.TURN

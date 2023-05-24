@@ -1,7 +1,7 @@
 from range_sensors import RangeSensor
 import numpy as np
 
-DEFAULT_DISTANCE_DETECTION = 500
+DEFAULT_DISTANCE_DETECTION = 10000
 
 
 class VirtualTFMiniPlus(RangeSensor):
