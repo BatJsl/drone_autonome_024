@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11" />
+    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11">
+      <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,14 +95,7 @@
       <workItem from="1684324388010" duration="1302000" />
       <workItem from="1684745924210" duration="3600000" />
       <workItem from="1684758124135" duration="12345000" />
-      <workItem from="1684955244671" duration="1149000" />
-    </task>
-    <task id="LOCAL-00003" summary="commit sur la nouvelle branche &quot;corridor_dev&quot;">
-      <created>1680186087006</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1680186087006</updated>
+      <workItem from="1684955244671" duration="1466000" />
     </task>
     <task id="LOCAL-00004" summary="Avancées sur la fonction &quot;draw_corridors&quot;">
       <created>1680273296786</created>
@@ -437,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684956263554</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="To test 11">
+      <created>1684956447840</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1684956447840</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

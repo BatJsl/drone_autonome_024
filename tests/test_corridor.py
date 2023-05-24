@@ -1,6 +1,7 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
 # mavproxy.py --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
+# cd branch_corridor/projet_drone_024/tests
 # python test_corridor.py --connect udp:127.0.0.1:14551
 """
 Test flying in a corridor avoidance with four lidar sensors
@@ -44,7 +45,7 @@ x0 = -1000
 y0 = 1000
 length = 20000
 angle = -45
-width_corridor = 3000
+width_corridor = 300
 
 #Base velocity :
 
