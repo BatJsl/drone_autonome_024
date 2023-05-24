@@ -44,7 +44,7 @@ else:
 x0 = -1000
 y0 = 1000
 length = 20000
-angle = -45
+angle = 25
 width_corridor = 300
 
 #Base velocity :
