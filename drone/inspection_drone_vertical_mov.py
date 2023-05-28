@@ -18,7 +18,7 @@ class InspectionDroneVertical(object):
 
     def __init__(self, connection_string, baudrate, two_way_switches, three_way_switches,
                  lidar_address=None, lidar_angle=None, lidar_vertical_address=None, lidar_vertical_position=None,
-                 critical_distance_lidar=300):
+                 critical_distance_lidar=100):
         """
         Constructor: initialize a vehicle instance
         Inputs:
@@ -125,11 +125,13 @@ class InspectionDroneVertical(object):
         else:
             self._obstacle_detected = False
 
-    def update_vertical_down_detection(self, debug=False):
+    def update_vertical_down_detection(self, debug=True):
         # Debug mode: read and print distance from sensor
         if self.vertical_lidars.read_down_distance() and debug:
-            print("Lidar range:" + str(self.vertical_lidars.get_down_distance()))
+            print("down distance")
+            print(self.vertical_lidars.get_down_distance())
         if self.vertical_lidars.get_down_lidar().critical_distance_reached():
+            print("distance reached")
             if self.vertical_lidars.obstacle_detected_down():
                 self._time_last_obstacle_detected = time.time()
             self.vertical_lidars._obstacle_detected_down = True

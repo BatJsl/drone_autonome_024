@@ -1,6 +1,7 @@
 from tf_mini import TFMiniPlus
 import numpy as np
 
+
 class DroneVerticalSensors(object):
     """
     Class to define vertical sensors in the Drone
@@ -32,7 +33,8 @@ class VerticalLidarsDetection(object):
     """
 
     def __init__(self, lidar_address, lidar_position, critical_distance_lidar=100):
-        self._lidar_sensors = DroneVerticalSensors(lidar_address, lidar_position, critical_distance_lidar).lidar_v_sensors
+        self._lidar_sensors = DroneVerticalSensors(lidar_address, lidar_position,
+                                                   critical_distance_lidar).lidar_v_sensors
         self._up_lidar = None
         self._down_lidar = None
         self._distance_up = None
@@ -92,21 +94,31 @@ class VerticalLidarsDetection(object):
         """
         Function used to update the vertical path in a corridor
         """
-        # self.read_up_distance()
-        # self.read_down_distance()
+        self.read_up_distance()
+        self.read_down_distance()
         up_dis = self.get_up_distance()
         down_dis = self.get_down_distance()
-        middle = (np.abs(self.get_up_distance() + self.get_down_distance()) / 2)
+        print("up distance")
+        print(up_dis)
+        print("down distance")
+        print(down_dis)
 
-        if up_dis > down_dis and np.abs(up_dis - middle) > 10:
-            self._go_up = True
+        if up_dis == 0 or down_dis == 0:
+            print("no floor or roof")
             self._go_down = False
-        elif up_dis < down_dis and np.abs(down_dis - middle) > 10:
-            self._go_down = True
             self._go_up = False
         else:
-            self._go_down = False
-            self._go_up = False
+            middle = (np.abs(self.get_up_distance() + self.get_down_distance()) / 2)
+            if up_dis > down_dis and np.abs(up_dis - middle) > 10:
+                self._go_up = True
+                self._go_down = False
+            elif up_dis < down_dis and np.abs(down_dis - middle) > 10:
+                self._go_down = True
+                self._go_up = False
+            else:
+                self._go_down = False
+                self._go_up = False
+                return False
 
     def update_vertical_path_obstacle(self, vertical_obstacle_detected):
         """
@@ -123,7 +135,3 @@ class VerticalLidarsDetection(object):
         else:
             self._go_down = False
             self._go_up = False
-
-
-
-
