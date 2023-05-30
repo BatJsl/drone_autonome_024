@@ -17,7 +17,7 @@ from inspection_drone import InspectionDrone
 from corridor import CorridorObstacle
 
 
-simulation = True
+simulation = False
 
 parser = argparse.ArgumentParser(description='commands')
 parser.add_argument('--connect')
@@ -33,26 +33,29 @@ if simulation:
                          two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
                          lidar_angle=[-90, 0, 90, 180])
     first_detection = True
+    # Init obstacles
+    x0 = -1000
+    y0 = 1000
+    length = 20000
+    angle = -45
+    width_corridor = 300
+
+    corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
+    walls = corridor.walls_corridor()
 
 else:
     drone = InspectionDrone(connection_string, baudrate=115200,
                             two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                            lidar_angle=[-90, 0, 90, 180], lidar_address=[0x12, 0x10, 0x11, 0x13])
+                            lidar_angle=[-90, 0, 90, 180], lidar_address=[0x10, 0x15, 0x14, 0x16])
 
 
-# Init obstacles
-x0 = -1000
-y0 = 1000
-length = 20000
-angle = -45
-width_corridor = 300
+
 
 #Base velocity :
 
 Speed = .1
 
-corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
-walls = corridor.walls_corridor()
+
 
 drone.launch_mission()
 # Simulation : arm and takeoff the drone
