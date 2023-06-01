@@ -45,8 +45,7 @@ if simulation:
 
 else:
     drone = InspectionDrone(connection_string, baudrate=115200,
-                            two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12],
-                            lidar_angle=[-90, 0, 90, 180], lidar_address=[0x10, 0x15, 0x14, 0x16])
+                            two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12])
 
 
 
