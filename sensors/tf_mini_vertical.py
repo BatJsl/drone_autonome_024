@@ -103,7 +103,7 @@ class VerticalLidarsDetection(object):
         print("down distance")
         print(down_dis)
 
-        if up_dis == 0 or down_dis == 0:
+        if (up_dis == 0 or up_dis > 500/2) or (down_dis == 0 or down_dis > 500/2):
             print("no floor or roof")
             self._go_down = False
             self._go_up = False
@@ -112,9 +112,11 @@ class VerticalLidarsDetection(object):
             if up_dis > down_dis and np.abs(up_dis - middle) > 10:
                 self._go_up = True
                 self._go_down = False
+                return True
             elif up_dis < down_dis and np.abs(down_dis - middle) > 10:
                 self._go_down = True
                 self._go_up = False
+                return True
             else:
                 self._go_down = False
                 self._go_up = False

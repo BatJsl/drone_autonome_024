@@ -1,6 +1,6 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# python test_avoidance.py --connect udp:127.0.0.1:14551
+# python Test3_vertical_position.py --connect udp:127.0.0.1:14551
 """
 Test vertical positionning with vertical lidars in real Drone
 """
@@ -26,9 +26,29 @@ drone = InspectionDroneVertical('/dev/serial0', baudrate=115200,
                                 lidar_vertical_position=[0, 1], critical_distance_lidar=100)
 
 drone.launch_mission()
-print("sleep 10 sec to start mission")
-time.sleep(10)
-print("starting mission")
+initial_auto_mode = False
+print("while cycle")
+while not initial_auto_mode:
+    print(drone.get_last_flight_mode())
+    if drone.is_in_auto_mode():
+        initial_auto_mode = True
+    time.sleep(0.2)
+print("Sleep time 6 seg")
+time.sleep(6)
+
+"""altitude_desire = 1.2
+altitude_reached = False
+print("first while cycle to wait auto mode")
+while not altitude_reached:
+    actual_altitude = drone.get_altitude()
+    print(actual_altitude)
+    if abs(actual_altitude-altitude_desire) < 0.1:
+        altitude_reached = True"""
+
+#print("sleep 10 sec to start mission")
+#time.sleep(10)
+#print("starting mission")
+
 while drone.mission_running():
     drone.update_time()  # update time since connexion and mission's start
     drone.update_switch_states()  # update the RC transmitter switch state

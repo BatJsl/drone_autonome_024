@@ -26,16 +26,24 @@ drone = InspectionDroneVertical('/dev/serial0', baudrate=115200,
                                 lidar_vertical_position=[0, 1], critical_distance_lidar=100)
 
 drone.launch_mission()
-print("sleep 10 sec to start mission")
-time.sleep(10)
-print("starting mission")
+
+initial_poshold_mode = False
+print("while cycle")
+while not initial_poshold_mode:
+    print(drone.get_last_flight_mode())
+    if drone.is_in_poshold_mode():
+        initial_poshold_mode = True
+    time.sleep(0.2)
+print("Sleep time 6 seg")
+time.sleep(6)
+
 while drone.mission_running():
     drone.update_time()  # update time since connexion and mission's start
     drone.update_switch_states()  # update the RC transmitter switch state
     if drone.vertical_lidars.get_up_lidar().lidar_reading():
         drone.vertical_lidars.update_vertical_path_corridor()
 
-    if (drone.vertical_lidars._go_up or drone.vertical_lidars._go_down ) and drone.is_in_auto_mode():
+    if (drone.vertical_lidars._go_up or drone.vertical_lidars._go_down ) and drone.is_in_poshold_mode():
         print("changed to guided mode")
         drone.set_guided_mode()
         drone.send_mavlink_stay_stationary()
@@ -47,11 +55,12 @@ while drone.mission_running():
         elif drone.vertical_lidars._go_down:
             drone.send_mavlink_go_down(0.10)
             print("go down")
-    if not drone.vertical_lidars.update_vertical_path_corridor() and drone.is_in_guided_mode():
+    if not drone.vertical_lidars.update_vertical_path_corridor() and drone.is_in_guided_mode() and \
+            drone.time_since_guided_mode() >3:
 #Ajouter une condition de temps, pour pas changer inmediatement
-            #and drone.time_since_last_obstacle_detected() > 3:  # obstacle avoided IRL
+#and drone.time_since_last_obstacle_detected() > 3:  # obstacle avoided IRL
         print("changed to auto mode")
-        drone.set_auto_mode()  # resume mission
+        drone.set_poshold_mode()  # resume mission
     if drone.time_since_last_obstacle_detected() > 60:
         drone.abort_mission()
 

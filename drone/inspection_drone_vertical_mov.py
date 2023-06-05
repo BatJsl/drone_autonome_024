@@ -80,6 +80,7 @@ class InspectionDroneVertical(object):
         self._mission_start_time = 0
         self._obstacle_detected = False
         self._time_last_obstacle_detected = None
+        self._time_guided_mode = None
         self._elapsed_time_connexion = time.time() - self._start_time
         self._elapsed_time_mission = 0
         self._mission_running = False
@@ -177,6 +178,12 @@ class InspectionDroneVertical(object):
             return -1
         else:
             return time.time() - self._time_last_obstacle_detected
+
+    def time_since_guided_mode(self):
+        if self._time_guided_mode is None:
+            return -1
+        else:
+            return time.time() - self._time_guided_mode
 
     def do_lidar_reading(self):
         """
@@ -358,11 +365,18 @@ class InspectionDroneVertical(object):
     def is_in_guided_mode(self):
         return self.vehicle.mode == VehicleMode("GUIDED")
 
+    def is_in_poshold_mode(self):
+        return self.vehicle.mode == VehicleMode("POSHOLD")
+
     # Functions to set the drone flight mode
     def set_auto_mode(self):
         self.vehicle.mode = VehicleMode("AUTO")
 
+    def set_poshold_mode(self):
+        self.vehicle.mode = VehicleMode("POSHOLD")
+
     def set_guided_mode(self):
+        self._time_guided_mode = time.time()
         self.vehicle.mode = VehicleMode("GUIDED")
 
     def set_flight_mode(self, flightmode):
@@ -397,6 +411,11 @@ class InspectionDroneVertical(object):
 
     def get_velocity(self):
         return self.vehicle.velocity
+    def get_altitude(self):
+        return self.vehicle.location.global_frame.alt
+            #vehicle.location.local_frame.down
+
+    #vehicle.location.global_frame.alt
 
     def get_yaw(self):
         """
