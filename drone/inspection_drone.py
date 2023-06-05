@@ -113,10 +113,9 @@ class InspectionDrone(object):
         Update the distance read by the sensor and return if an obstacle is detected
         An obstacle is detected if the distance read is inferior to the critical distance
         """
-        # Debug mode: read and print distance from sensor
-        if use_lidar and self.lidar.read_distance() and debug:
-            print("Lidar range:" + str(self.lidar.get_distance()))
         if use_lidar:
+            self.lidar.read_distances()
+            self.lidar.get_distances()
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
                 self._corridor_detected = True
@@ -348,14 +347,19 @@ class InspectionDrone(object):
     def choose_direction(self, Speed) :
         if self.lidar.state == State.LEFT:  # strafe left
             self.send_mavlink_go_left(Speed)
+            print('left')
         elif self.lidar.state == State.RIGHT:  # strafe right
             self.send_mavlink_go_right(Speed)
+            print('right')
         elif self.lidar.state == State.FORWARD:  # go forward
             self.send_mavlink_go_forward(Speed)
+            print('forward')
         elif self.lidar.state == State.BACKWARD:  # go backward
             self.send_mavlink_go_backward(Speed)
+            print('backward')
         elif self.lidar.state == State.TURN:  # turn
             self.send_mavlink_right_rotate(10)
+            print('turn')
         elif self.lidar.state == State.STOP:  # stop
             self.send_mavlink_stay_stationary()
       
