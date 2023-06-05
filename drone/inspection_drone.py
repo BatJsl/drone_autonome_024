@@ -80,12 +80,14 @@ class InspectionDrone(object):
         self._yaw_before_rotation = 0
         self._yaw = 0
         # Initialize sensors
-        # Front_sensor = TFMiniPlus(0x10, 0)
-        # Left_sensor = TFMiniPlus(0x12, 0)
-        # Right_sensor = TFMiniPlus(0x11, 0)
-        # Back_sensor = TFMiniPlus(0x13, 0)
-        # tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
-        # self.lidar = DroneLidarSensors(tfminis)
+        lidar_angle = [-90, 0, 90, 180]
+        lidar_address = [0x10, 0x15, 0x14, 0x16]
+        Front_sensor = TFMiniPlus(0x10, 0)
+        Left_sensor = TFMiniPlus(0x15, 0)
+        Right_sensor = TFMiniPlus(0x14, 0)
+        Back_sensor = TFMiniPlus(0x16, 0)
+        tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
+        self.lidar = DroneLidarSensors(tfminis)
 
     def update_switch_states(self):
         """
@@ -111,10 +113,9 @@ class InspectionDrone(object):
         Update the distance read by the sensor and return if an obstacle is detected
         An obstacle is detected if the distance read is inferior to the critical distance
         """
-        # Debug mode: read and print distance from sensor
-        if use_lidar and self.lidar.read_distance() and debug:
-            print("Lidar range:" + str(self.lidar.get_distance()))
         if use_lidar:
+            self.lidar.read_distances()
+            self.lidar.get_distances()
             if self.corridor_detected():
                 self._time_last_corridor_detected = time.time()
                 self._corridor_detected = True
@@ -346,14 +347,19 @@ class InspectionDrone(object):
     def choose_direction(self, Speed) :
         if self.lidar.state == State.LEFT:  # strafe left
             self.send_mavlink_go_left(Speed)
+            print('left')
         elif self.lidar.state == State.RIGHT:  # strafe right
             self.send_mavlink_go_right(Speed)
+            print('right')
         elif self.lidar.state == State.FORWARD:  # go forward
             self.send_mavlink_go_forward(Speed)
+            print('forward')
         elif self.lidar.state == State.BACKWARD:  # go backward
             self.send_mavlink_go_backward(Speed)
+            print('backward')
         elif self.lidar.state == State.TURN:  # turn
             self.send_mavlink_right_rotate(10)
+            print('turn')
         elif self.lidar.state == State.STOP:  # stop
             self.send_mavlink_stay_stationary()
       

@@ -33,11 +33,10 @@ class DroneLidarSensors(object):
                 return True
         return False
 
-    def read_distances(self, drone_x, drone_y, drone_angle, walls):
+    def read_distances(self):
         for i in range(self._lidar_number):
             sensor = self.tfminis[i]
-            sensor_angle = sensor.angle
-            sensor.read_distance(drone_x, drone_y, (drone_angle - sensor_angle) % 360)
+            sensor.read_distance()
 
     def get_distances(self):
         self.distances = []
