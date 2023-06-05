@@ -1,6 +1,6 @@
 # dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
 # mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# python test_avoidance.py --connect udp:127.0.0.1:14551
+# python Test0_vertical_position_real_drone.py --connect udp:127.0.0.1:14551
 """
 Test vertical positionning with vertical lidars in real Drone
 """

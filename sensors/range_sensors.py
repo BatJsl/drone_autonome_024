@@ -7,7 +7,7 @@ DEFAULT_CRITICAL_DISTANCE = 100
 class RangeSensor(object):
     """
     Class that defines a general range sensor.
-    It cannot read data because this function is specific to each sensors.
+    It cannot read data because this function is specific to each sensor.
     Thus this class cannot be used by itself but is very useful for the lidar and sonar child classes
     """
     def __init__(self, critical_distance=DEFAULT_CRITICAL_DISTANCE):
