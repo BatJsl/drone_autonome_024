@@ -79,11 +79,12 @@ class InspectionDrone(object):
         self._rotation_angle = 0
         self._yaw_before_rotation = 0
         self._yaw = 0
+        self._time_last_corridor_detected = -1
         # Initialize sensors
         lidar_angle = [-90, 0, 90, 180]
         lidar_address = [0x10, 0x15, 0x14, 0x16]
-        Front_sensor = TFMiniPlus(0x10, 0)
-        Left_sensor = TFMiniPlus(0x15, 0)
+        Front_sensor = TFMiniPlus(0x15, 0)
+        Left_sensor = TFMiniPlus(0x10, 0)
         Right_sensor = TFMiniPlus(0x14, 0)
         Back_sensor = TFMiniPlus(0x16, 0)
         tfminis = [Left_sensor, Front_sensor, Right_sensor, Back_sensor]
