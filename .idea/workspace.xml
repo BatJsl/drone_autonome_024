@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,14 +96,8 @@
       <workItem from="1684745924210" duration="3600000" />
       <workItem from="1684758124135" duration="12345000" />
       <workItem from="1684955244671" duration="6323000" />
-      <workItem from="1685434001659" duration="66000" />
-    </task>
-    <task id="LOCAL-00011" summary="tests sur tests2_lidars">
-      <created>1682335525590</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1682335525590</updated>
+      <workItem from="1685434001659" duration="1646000" />
+      <workItem from="1685699626534" duration="1988000" />
     </task>
     <task id="LOCAL-00012" summary="tests sur tests2_lidars">
       <created>1682497437218</created>
@@ -440,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685008003237</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="To test 11">
+      <created>1685443872762</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1685443872762</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

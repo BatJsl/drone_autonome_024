@@ -5,7 +5,11 @@ def tresh_lerp(tresh,LX,LY,DX,DY):
     DeltaX_r = -fact*DX
     DeltaY_r = -(1-fact)*DY
     return DeltaX_r, DeltaY_r
-
+def filter_zeros(value):
+    if value == 0 :
+        return 1000
+    else :
+        return value
 class State(Enum):
     STOP = "stop"
     FORWARD = "forward"
@@ -48,13 +52,14 @@ class DroneLidarSensors(object):
     def corridor_detected(self):
         return self.distances != [] and sum(self.distances) > 0
 
+
     def generate_instructions_4sensors(self):
         """
         Changes the state of the drone according to the lidar readings
         """
-        front_distance = max(1, self.distances[1])
-        left_distance = max(1, self.distances[0])
-        right_distance = max(1, self.distances[2])
+        front_distance = filter_zeros(self.distances[1])
+        left_distance = filter_zeros(self.distances[0])
+        right_distance = filter_zeros(self.distances[2])
         if front_distance < 2 * (left_distance + right_distance):
             print("in generate instructions : turn")
             self.state = State.TURN
