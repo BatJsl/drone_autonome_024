@@ -135,7 +135,7 @@ title = "K=" + str(K)
 axes[0].plot(list_time,list_V_command, label="Ordered")
 axes[0].plot(list_time,list_V_measured, label="Measured")
 axes[0].set_xlabel('Time')
-axes[0].set_ylabel("Speed on x")
+axes[0].set_ylabel("Speed on z")
 axes[0].legend()
 
 axes[1].plot(list_time,list_measured_distance)
