@@ -79,7 +79,11 @@ class CorridorObstacle(WallObstacle):
             Y2 = a2 * X2 + b2
 
         plt.plot(X1, Y1)
+        plt.xlim(left=0, right=300)
+        plt.ylim(bottom=-300, top=0)
         plt.plot(X2, Y2)
+        plt.xlim(left=0, right=300)
+        plt.ylim(bottom=-300, top=0)
         plt.grid()
         plt.show()
         return 0

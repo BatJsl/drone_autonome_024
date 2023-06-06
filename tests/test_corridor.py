@@ -17,7 +17,7 @@ from inspection_drone import InspectionDrone
 from corridor import CorridorObstacle
 
 
-simulation = False
+simulation = True
 
 parser = argparse.ArgumentParser(description='commands')
 parser.add_argument('--connect')
@@ -34,10 +34,10 @@ if simulation:
                          lidar_angle=[-90, 0, 90, 180])
     first_detection = True
     # Init obstacles
-    x0 = -1000
-    y0 = 1000
+    x0 = -100
+    y0 = 100
     length = 20000
-    angle = -45
+    angle = 0
     width_corridor = 300
 
     corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)

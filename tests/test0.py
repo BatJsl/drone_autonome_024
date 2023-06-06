@@ -5,20 +5,36 @@ sys.path.insert(0, '../obstacles')
 from wall import WallObstacle
 from corridor import CorridorObstacle
 
-
 # Init obstacles
-x0 = -1000
-y0 = 1000
-length = 2000
-angle = -45
+x01 = -100
+y01 = 100
+length = 250
+angle1 = 0
+width_corridor = 200
 
-# wall1 = WallObstacle(x0, y0, length, angle)
-width_corridor = 300
-corridor = CorridorObstacle(x0, y0, length, angle, width_corridor)
-walls = corridor.walls_corridor()
-print(walls)
+corridor1 = CorridorObstacle(x01, y01, length, angle1, width_corridor)
+walls1 = corridor1.walls_corridor()
 
-# print(corridor.equation_of_corridors())
+x02 = x01 + length
+y02 = y01 - width_corridor
+angle2 = angle1 + 90
+corridor2 = CorridorObstacle(x02, y02, length, angle2, width_corridor)
 
-print(corridor.draw_corridor())
-# print(walls)
+walls2 = corridor2.walls_corridor()
+
+# wall3
+x3 = x01
+y3 = y01 + length
+angle3 = angle1
+wall3 = WallObstacle(x3, y3, width_corridor, angle3)
+
+# wall4
+x4 = x01
+y4 = y3 + width_corridor
+angle4 = angle3 + 90
+wall4 = WallObstacle(x4, y4, width_corridor, angle4)
+
+
+print(corridor2.draw_corridor(), corridor1.draw_corridor())
+walls = [walls1, walls2]
+
