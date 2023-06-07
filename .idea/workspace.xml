@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="modifs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/drone/inspection_drone.py" beforeDir="false" afterPath="$PROJECT_DIR$/drone/inspection_drone.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensors/drone_sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/sensors/drone_sensors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_corridor.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_corridor.py" afterDir="false" />
-    </list>
+    <list default="true" id="cc810850-68bf-4209-a4fc-bcce90146ebe" name="Changes" comment="To test 11" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,20 +96,6 @@
       <workItem from="1685434001659" duration="1646000" />
       <workItem from="1685699626534" duration="1988000" />
       <workItem from="1685969398542" duration="1559000" />
-    </task>
-    <task id="LOCAL-00012" summary="tests sur tests2_lidars">
-      <created>1682497437218</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1682497437218</updated>
-    </task>
-    <task id="LOCAL-00013" summary="reglages pour pull">
-      <created>1682497558236</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1682497558236</updated>
     </task>
     <task id="LOCAL-00014" summary="To test 10">
       <created>1684226348646</created>
@@ -445,7 +426,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685443872762</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="To test 11">
+      <created>1686126929081</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1686126929082</updated>
+    </task>
+    <task id="LOCAL-00062" summary="To test 11">
+      <created>1686127111546</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1686127111546</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
