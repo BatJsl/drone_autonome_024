@@ -59,20 +59,24 @@ class DroneLidarSensors(object):
         front_distance = filter_zeros(self.distances[1])
         left_distance = filter_zeros(self.distances[0])
         right_distance = filter_zeros(self.distances[2])
+        factor = 1
         if front_distance < 2 * (left_distance + right_distance):
             print("in generate instructions : turn")
             self.state = State.TURN
         else:
-            if max(left_distance / right_distance, right_distance / left_distance) > 1.2:
-                if left_distance > right_distance:
-                    self.state = State.LEFT
-                    print("in generate instructions : left")
-                else:
-                    self.state = State.RIGHT
-                    print("in generate instructions : right")
-            else:
+            if left_distance / right_distance > 1.2:
+                self.state = State.LEFT
+                factor = min((left_distance / right_distance)-1.2,1)
+                print("in generate instructions : left")
+
+            elif right_distance / left_distance > 1.2:
+                self.state = State.RIGHT
+                factor = min((right_distance / left_distance) - 1.2, 1)
+                print("in generate instructions : right")
+            else :
                 self.state = State.FORWARD
                 print("in generate instructions : front")
+        return factor
 
     def generate_instructions_4sensors_wip(self,tresh):
         """
@@ -111,4 +115,8 @@ class DroneLidarSensors(object):
 
     def update_path(self, corridor_detected):
         if corridor_detected:
-            self.generate_instructions_4sensors()
+            factor = self.generate_instructions_4sensors()
+        else :
+            factor  = 1
+            print("no corridor detected")
+        return factor

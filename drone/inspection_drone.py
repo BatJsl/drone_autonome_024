@@ -348,19 +348,20 @@ class InspectionDrone(object):
     def choose_direction(self, Speed) :
         if self.lidar.state == State.LEFT:  # strafe left
             self.send_mavlink_go_left(Speed)
-            print('left')
+            print('in choose direction : left')
         elif self.lidar.state == State.RIGHT:  # strafe right
             self.send_mavlink_go_right(Speed)
-            print('right')
+            print('in choose direction : right')
         elif self.lidar.state == State.FORWARD:  # go forward
             self.send_mavlink_go_forward(Speed)
-            print('forward')
+            print('in choose direction : forward')
         elif self.lidar.state == State.BACKWARD:  # go backward
             self.send_mavlink_go_backward(Speed)
-            print('backward')
+            print('in choose direction : backward')
         elif self.lidar.state == State.TURN:  # turn
             self.send_mavlink_right_rotate(10)
-            print('turn')
+            print('in choose direction : turn')
         elif self.lidar.state == State.STOP:  # stop
             self.send_mavlink_stay_stationary()
+            print('in choose direction : stop')
       

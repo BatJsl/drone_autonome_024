@@ -17,7 +17,7 @@ from inspection_drone import InspectionDrone
 from corridor import CorridorObstacle
 
 
-simulation = True
+simulation = False
 
 parser = argparse.ArgumentParser(description='commands')
 parser.add_argument('--connect')
@@ -69,16 +69,12 @@ while drone.mission_running():
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
-    if drone.is_in_guided_mode() or True:
-        drone.lidar.update_path(drone.corridor_detected())
-        drone.choose_direction(Speed)
+    if drone.is_in_guided_mode() :
+        factor = drone.lidar.update_path(drone.corridor_detected())
+        drone.choose_direction(factor*Speed)
         print("in test corridor", drone.lidar.state)
     if not drone.corridor_detected() and drone.is_in_guided_mode()\
-            and drone.time_since_last_corridor_detected() > 3 and not simulation:  # no corridor found IRL
+            and drone.time_since_last_corridor_detected() > 20 and not simulation:  # no corridor found IRL
         drone.send_mavlink_stay_stationary()
-        drone.lidar.update_path(drone.corridor_detected())
-    if not drone.corridor_detected() and drone.is_in_guided_mode() \
-            and drone.time_since_last_corridor_detected() > 3 and simulation:  # no corridor found simulator
-        first_detection = True  # resume mission
     time.sleep(0.1)
 
