@@ -72,7 +72,7 @@ while drone.mission_running():
     if drone.is_in_guided_mode() or True:
         factor = drone.lidar.update_path(drone.corridor_detected())
         drone.choose_direction(factor*Speed)
-        print("in test corridor", drone.lidar.state)
+        print("in test corridor", drone.lidar.state, 'factor', factor)
     if not drone.corridor_detected() and drone.is_in_guided_mode()\
             and drone.time_since_last_corridor_detected() > 20 and not simulation:  # no corridor found IRL
         drone.send_mavlink_stay_stationary()
