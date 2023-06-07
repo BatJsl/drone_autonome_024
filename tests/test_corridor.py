@@ -76,6 +76,6 @@ while drone.mission_running():
     if not drone.corridor_detected() and drone.is_in_guided_mode()\
             and drone.time_since_last_corridor_detected() > 20 and not simulation:  # no corridor found IRL
         drone.send_mavlink_stay_stationary()
-            print("in test corridor stop")
+        print("in test corridor stop")
     time.sleep(0.1)
 
