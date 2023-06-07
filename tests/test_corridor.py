@@ -69,7 +69,7 @@ while drone.mission_running():
             drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
-    if drone.is_in_guided_mode() :
+    if drone.is_in_guided_mode() or True:
         factor = drone.lidar.update_path(drone.corridor_detected())
         drone.choose_direction(factor*Speed)
         print("in test corridor", drone.lidar.state)
