@@ -1,8 +1,3 @@
-# dronekit-sitl copter-3.3 --home=48.8411292,2.5879308,584,353
-# mavproxy.exe --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# mavproxy.py --master tcp:127.0.0.1:5760 --out udp:127.0.0.1:14550 --out udp:127.0.0.1:14551
-# cd branch_corridor/projet_drone_024/tests
-# python test_corridor.py --connect udp:127.0.0.1:14551
 """
 Test flying in a corridor avoidance with four lidar sensors
 Version for simulator (simulation = True) and reality (simulation = False)
@@ -61,27 +56,9 @@ drone.launch_mission()
 if simulation:
     drone.arm_and_takeoff(0.7)
 
-print("begin sleep")
-sleep(10)
-drone.set_guided_mode()
-print("end sleep")
-
 while drone.mission_running():
     drone.update_time()  # update time since connexion and mission's start
     drone.update_switch_states()  # update the RC transmitter switch state
-    if drone.do_lidar_reading():  # ask a reading every 20 ms
-        if simulation:
-            drone.update_detection(use_lidar=True, debug=False, walls=walls)  # distance measure
-        else:
-            drone.update_detection(use_lidar=True, debug=True)  # distance measure
     if drone.is_in_guided_mode() or True:
-        factor = drone.lidar.update_path(drone.corridor_detected())
-        drone.choose_direction(factor*Speed)
-        print("in test corridor", drone.lidar.state, 'factor', factor)
-        print("in test corridor", drone.vehicule.mode)
-    if not drone.corridor_detected() and drone.is_in_guided_mode()\
-            and drone.time_since_last_corridor_detected() > 20 and not simulation:  # no corridor found IRL
-        drone.send_mavlink_stay_stationary()
-        print("in test corridor stop")
+        drone.send_mavlink_go_forward(.2)
     time.sleep(0.1)
-
