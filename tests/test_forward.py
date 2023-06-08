@@ -66,4 +66,5 @@ while drone.mission_running():
     drone.update_switch_states()  # update the RC transmitter switch state
     if drone.is_in_guided_mode() or True:
         drone.send_mavlink_right_rotate(90)
-    time.sleep(1)
+    time.sleep(3)
+    print('time')
