@@ -56,6 +56,11 @@ drone.launch_mission()
 if simulation:
     drone.arm_and_takeoff(0.7)
 
+print("begin sleep")
+sleep(10)
+drone.set_guided_mode()
+print("end sleep")
+
 while drone.mission_running():
     drone.update_time()  # update time since connexion and mission's start
     drone.update_switch_states()  # update the RC transmitter switch state
