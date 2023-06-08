@@ -242,7 +242,7 @@ class InspectionDrone(object):
         Input: angle of rotation in degrees
         """
         # Check that the drone isn't already rotating
-        if not self._is_rotating():
+        if True :#not self._is_rotating():
             # Update the rotation angle and the yaw before the rotation
             self._update_yaw()
             self._yaw_before_rotation = self._yaw
