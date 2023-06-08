@@ -62,7 +62,7 @@ if simulation:
     drone.arm_and_takeoff(0.7)
 
 print("begin sleep")
-sleep(10)
+time.sleep(10)
 drone.set_guided_mode()
 print("end sleep")
 
