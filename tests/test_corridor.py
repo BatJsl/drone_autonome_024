@@ -52,7 +52,7 @@ else:
 
 #Base velocity :
 
-Speed = .3
+Speed = .4
 
 
 

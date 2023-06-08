@@ -42,6 +42,7 @@ if simulation:
 
     corridor1 = CorridorObstacle(x01, y01, length, angle1, width_corridor)
     walls1 = corridor1.walls_corridor()
+    print(walls1)
 
     x02 = x01 + length
     y02 = y01 - width_corridor
@@ -55,14 +56,14 @@ if simulation:
     y3 = y01 + length
     angle3 = angle1
     wall3 = WallObstacle(x3, y3, width_corridor, angle3)
-
+    print(wall3)
     # wall4
     x4 = x01
     y4 = y3 + width_corridor
     angle4 = angle3 + 90
     wall4 = WallObstacle(x4, y4, width_corridor, angle4)
 
-    walls = [walls1, walls2, wall3, wall4]
+    walls = [walls1[0], walls1[1], walls2[0], walls2[1], wall3, wall4]
 else:
     drone = InspectionDrone(connection_string, baudrate=115200,
                             two_way_switches=[7, 8], three_way_switches=[5, 6, 8, 9, 10, 11, 12])
@@ -81,7 +82,7 @@ while drone.mission_running():
     if drone.do_lidar_reading():  # ask a reading every 20 ms
         if simulation:
             drone.update_detection(use_lidar=True, debug=True, walls=walls)  # distance measure
-            drone.update_side_detection(debug=True, walls=walls)
+            # drone.update_side_detection(debug=True, walls=walls)
         else:
             drone.update_detection(use_lidar=True, debug=True)  # distance measure
             drone.update_side_detection(use_lidar=True, debug=True)
