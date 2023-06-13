@@ -64,14 +64,14 @@ class DroneLidarSensors(object):
             print("in generate instructions : turn")
             self.state = State.TURN
         else:
-            if left_distance / right_distance > 1.2:
+            if left_distance / right_distance > 1.1:
                 self.state = State.LEFT
-                factor = min((left_distance / right_distance)-1.2,1)
+                factor = min((left_distance / right_distance)-1.1,1.5)
                 print("in generate instructions : left")
 
-            elif right_distance / left_distance > 1.2:
+            elif right_distance / left_distance > 1.1:
                 self.state = State.RIGHT
-                factor = min((right_distance / left_distance) - 1.2, 1)
+                factor = min((right_distance / left_distance) - 1.1, 1.5)
                 print("in generate instructions : right")
             else :
                 self.state = State.FORWARD
